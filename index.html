@@ -1,0 +1,594 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>رحلة تسجيل الدخول — IBCC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@500;700&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#101540; --blue:#1E2C87; --gold:#DE7A0F; --purple:#A118A0; --green:#1C8B23; --red:#b23b3b;
+  --muted:#5b6080; --bg:#ffffff; --panel:#f8f9fd; --line:#10154022;
+  --soft-b:#eef1fb; --soft-g:#fdf3e6; --soft-gr:#ecf5ed; --soft-r:#f9ecec; --soft-p:#f6e9f6;
+  --r:16px; --shadow:0 10px 30px -12px rgba(16,21,64,.25);
+  --font:'Tajawal','El Messiri',system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;
+  --disp:'El Messiri','Tajawal',system-ui,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{font-family:var(--font);background:var(--bg);color:var(--navy);line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+code,.mono{font-family:var(--mono);direction:ltr;unicode-bidi:isolate}
+.lat{direction:ltr;unicode-bidi:isolate;display:inline-block}
+button{font-family:inherit;cursor:pointer}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+
+/* header */
+header.top{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;gap:18px;height:60px}
+.brand{font-family:var(--disp);font-weight:700;font-size:18px;white-space:nowrap}
+.brand b{color:var(--gold)}
+nav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;flex:1}
+nav::-webkit-scrollbar{display:none}
+nav a{padding:6px 12px;border-radius:999px;text-decoration:none;font-size:14px;color:var(--muted);white-space:nowrap;transition:.2s}
+nav a:hover,nav a.on{background:var(--soft-b);color:var(--blue)}
+
+/* hero */
+.hero{padding:64px 0 36px;background:radial-gradient(120% 90% at 50% 0%,#fff 0%,#fff 55%,#f4f6fc 100%)}
+.eyebrow{font-family:var(--disp);letter-spacing:.22em;font-size:12px;color:var(--muted);text-transform:uppercase;direction:ltr;text-align:right}
+.hero h1{font-family:var(--disp);font-size:clamp(34px,6vw,60px);line-height:1.15;margin:12px 0 14px}
+.hero h1 span{color:var(--gold)}
+.hero p{max-width:640px;color:var(--muted);font-size:18px}
+.cta{display:inline-flex;gap:10px;align-items:center;margin-top:26px;padding:14px 26px;border-radius:14px;background:var(--gold);color:#fff;font-weight:700;font-size:17px;text-decoration:none;box-shadow:0 12px 24px -10px var(--gold);transition:.2s}
+.cta:hover{transform:translateY(-2px)}
+.hero-flow{display:flex;align-items:center;gap:10px;margin-top:38px;flex-wrap:wrap}
+.hf{padding:10px 18px;border-radius:12px;font-weight:700;color:#fff;font-size:15px;animation:pop 3.2s infinite}
+.hf:nth-child(1){background:var(--blue);animation-delay:0s}
+.hf:nth-child(3){background:var(--gold);animation-delay:.5s}
+.hf:nth-child(5){background:var(--purple);animation-delay:1s}
+.hf:nth-child(7){background:var(--green);animation-delay:1.5s}
+.ha{color:var(--muted);font-size:20px;animation:slide 3.2s infinite}
+@keyframes pop{0%,60%,100%{transform:scale(1)}20%{transform:scale(1.1)}}
+@keyframes slide{0%,100%{transform:translateX(0);opacity:.4}50%{transform:translateX(-6px);opacity:1}}
+
+section.blk{padding:56px 0}
+section.blk:nth-of-type(even){background:var(--panel)}
+.sh{display:flex;align-items:baseline;gap:12px;margin-bottom:10px}
+.sh .n{font-family:var(--disp);color:var(--gold);font-size:18px}
+.sh h2{font-family:var(--disp);font-size:clamp(24px,3.4vw,34px)}
+.sub{color:var(--muted);max-width:720px;margin-bottom:26px}
+
+/* restaurant cards */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.flip{perspective:900px;height:230px;cursor:pointer}
+.flip-in{position:relative;width:100%;height:100%;transition:transform .6s;transform-style:preserve-3d}
+.flip.on .flip-in{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;border-radius:var(--r);padding:20px;backface-visibility:hidden;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:8px;border:2px solid var(--c);background:var(--s);box-shadow:var(--shadow)}
+.face.back{transform:rotateY(180deg);background:var(--c);color:#fff}
+.face .big{font-family:var(--disp);font-size:26px;font-weight:700;color:var(--c)}
+.face.back .big{color:#fff;direction:ltr}
+.face .emoji{font-size:38px}
+.face small{opacity:.85}
+.face .hint{position:absolute;bottom:10px;font-size:12px;color:var(--muted)}
+.face.back code{background:rgba(255,255,255,.18);padding:3px 8px;border-radius:6px;font-size:12px}
+
+/* simulator */
+.sim{display:grid;grid-template-columns:minmax(320px,430px) 1fr;gap:22px;align-items:start}
+@media(max-width:980px){.sim{grid-template-columns:1fr}}
+.col{display:flex;flex-direction:column;gap:16px}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:18px;box-shadow:var(--shadow)}
+.card h3{font-size:16px;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:6px 14px;font-size:13.5px;color:var(--navy);transition:.2s}
+.chip:hover{border-color:var(--blue)}
+.chip.on{background:var(--blue);color:#fff;border-color:var(--blue)}
+.chip.bad.on{background:var(--red);border-color:var(--red)}
+.chip.ok.on{background:var(--green);border-color:var(--green)}
+
+.loginbox{border:2px solid var(--blue);border-radius:18px;overflow:hidden;background:#fff;position:relative}
+.loginbox .lh{background:var(--navy);color:#fff;text-align:center;padding:14px;font-family:var(--disp);font-size:20px;font-weight:700}
+.loginbox .lb{padding:18px 20px 20px;display:flex;flex-direction:column;gap:14px}
+.fld label{display:block;font-size:13px;color:var(--muted);margin-bottom:4px}
+.fld input{width:100%;padding:12px 14px;border-radius:10px;border:1.5px solid #bcc3e6;background:var(--soft-b);font-family:var(--font);font-size:15px;direction:ltr;text-align:left;outline:none;transition:.2s}
+.fld input:focus{border-color:var(--gold);box-shadow:0 0 0 3px #de7a0f33}
+.fld.err input{border-color:var(--red);background:var(--soft-r)}
+.fld .em{color:var(--red);font-size:12.5px;min-height:18px;margin-top:3px;direction:ltr;text-align:left}
+.go{padding:13px;border:none;border-radius:12px;background:var(--gold);color:#fff;font-weight:800;font-size:16px;display:flex;justify-content:center;align-items:center;gap:10px;transition:.2s}
+.go:hover:not(:disabled){transform:translateY(-1px)}
+.go:disabled{opacity:.7;cursor:wait}
+.spin{width:16px;height:16px;border:3px solid #fff7;border-top-color:#fff;border-radius:50%;animation:sp .8s linear infinite;display:none}
+.loading .spin{display:inline-block}
+@keyframes sp{to{transform:rotate(360deg)}}
+.toast{position:absolute;top:10px;left:10px;right:10px;background:var(--red);color:#fff;padding:10px 14px;border-radius:10px;font-size:13.5px;transform:translateY(-20px);opacity:0;pointer-events:none;transition:.35s;z-index:3}
+.toast.show{transform:translateY(0);opacity:1}
+.toast.okc{background:var(--green)}
+.dash{display:none;padding:34px 20px;text-align:center}
+.dash .big{font-family:var(--disp);font-size:24px;color:var(--green)}
+.dash.show{display:block}
+.lb.hide{display:none}
+
+.ctrls{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.btn{border:1.5px solid var(--blue);background:#fff;color:var(--blue);padding:8px 14px;border-radius:10px;font-weight:700;font-size:14px;transition:.2s}
+.btn:hover:not(:disabled){background:var(--blue);color:#fff}
+.btn.p{background:var(--blue);color:#fff}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+select.btn{padding:8px 10px}
+.prog{height:6px;background:var(--soft-b);border-radius:6px;overflow:hidden;margin-top:12px}
+.prog i{display:block;height:100%;width:0;background:var(--gold);transition:width .4s}
+
+.info{border-inline-start:5px solid var(--gold);background:var(--soft-g);min-height:150px}
+.info .st{font-family:var(--disp);font-size:13px;color:var(--gold);font-weight:700}
+.info h4{font-size:18px;margin:2px 0 6px}
+.info p{font-size:14.5px;color:#2b2f55}
+.info .ana{margin-top:8px;padding:8px 12px;background:#fff;border-radius:10px;font-size:13.5px}
+.info .code{margin-top:8px;display:inline-block;background:var(--navy);color:#fff;border-radius:8px;padding:3px 10px;font-size:12.5px}
+
+.state{font-family:var(--mono);font-size:12.5px;direction:ltr;text-align:left;line-height:1.6;white-space:pre-wrap;background:#0f1330;color:#d6dcff;border-radius:12px;padding:12px 14px;max-height:220px;overflow:auto}
+.state .k{color:#ffb865}.state .s{color:#8ee0a0}.state .r{color:#ff9a9a}
+
+.diagram{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:10px;box-shadow:var(--shadow);overflow:hidden}
+#diagram{max-height:min(860px,calc(100vh - 100px));overflow-y:auto;position:sticky;top:76px}
+@media(max-width:980px){#diagram{position:static;max-height:70vh}}
+.diagram svg{display:block;width:100%;height:auto}
+.row{opacity:0;transition:opacity .4s}
+.row.show{opacity:1}
+.row.cur .hl{stroke:var(--gold);stroke-width:3}
+.row.skip{opacity:.25}
+.lane-h{font-weight:700}
+
+/* serializer */
+.play{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:860px){.play{grid-template-columns:1fr}}
+textarea.json{width:100%;min-height:170px;border-radius:12px;border:1.5px solid var(--line);padding:12px;font-family:var(--mono);font-size:13.5px;direction:ltr;text-align:left;background:#0f1330;color:#d6dcff;outline:none;resize:vertical}
+textarea.json:focus{border-color:var(--gold)}
+.tgl{display:flex;align-items:center;gap:10px;font-weight:700}
+.sw{position:relative;width:52px;height:28px;background:#c8cce0;border-radius:99px;transition:.25s;border:none}
+.sw::after{content:"";position:absolute;top:3px;inset-inline-start:3px;width:22px;height:22px;border-radius:50%;background:#fff;transition:.25s;box-shadow:0 2px 6px #0003}
+.sw.on{background:var(--green)}
+.sw.on::after{inset-inline-start:27px}
+.verdict{border-radius:14px;padding:16px;border:2px solid var(--c,var(--line));background:var(--s,#fff);min-height:190px}
+.verdict .code-big{font-family:var(--disp);font-size:34px;font-weight:700;color:var(--c)}
+.verdict pre{font-family:var(--mono);direction:ltr;text-align:left;font-size:13px;margin-top:8px;white-space:pre-wrap}
+.verdict .why{margin-top:10px;font-size:14px}
+.rules{font-size:14px;color:var(--muted);margin-bottom:10px}
+.rules li{margin-inline-start:18px}
+
+/* storage + refresh */
+.rf{display:grid;grid-template-columns:minmax(300px,420px) 1fr;gap:22px}
+@media(max-width:940px){.rf{grid-template-columns:1fr}}
+input[type=range]{width:100%;accent-color:var(--gold)}
+.bars .bar{height:34px;border-radius:9px;background:var(--soft-b);position:relative;margin:8px 0;overflow:hidden}
+.bars .bar i{position:absolute;inset-block:0;inset-inline-start:0;display:block;transition:width .2s}
+.bars .bar span{position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;padding:0 12px;font-size:13px;font-weight:700}
+.nd{transition:.3s}
+.nd.on rect,.nd.on polygon{stroke-width:4;filter:drop-shadow(0 0 6px currentColor)}
+.nd.dim{opacity:.28}
+.ln.dim{opacity:.18}
+.ln.on{stroke-width:3.5}
+
+/* quiz */
+.qz{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.q h4{font-size:16px;margin-bottom:10px}
+.opt{display:block;width:100%;text-align:start;margin:6px 0;padding:10px 14px;border-radius:10px;border:1.5px solid var(--line);background:#fff;font-size:14.5px;transition:.2s}
+.opt:hover:not(:disabled){border-color:var(--blue)}
+.opt:disabled{color:var(--navy);opacity:1;cursor:default}
+.opt.right{background:var(--soft-gr);border-color:var(--green)}
+.opt.wrong{background:var(--soft-r);border-color:var(--red)}
+.q .ex{display:none;margin-top:8px;font-size:13.5px;color:var(--muted)}
+.q.done .ex{display:block}
+.score{margin-top:18px;font-weight:800;font-size:18px}
+
+/* glossary */
+.gs{width:100%;max-width:420px;padding:12px 16px;border-radius:12px;border:1.5px solid var(--line);font-family:var(--font);font-size:15px;margin-bottom:16px;outline:none}
+.gs:focus{border-color:var(--gold)}
+.gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.gi{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.gi b{font-family:var(--mono);direction:ltr;unicode-bidi:isolate;display:inline-block;color:var(--blue)}
+.gi p{font-size:14px;color:#2b2f55;margin-top:2px}
+.gi .tag{font-size:12px;color:var(--gold)}
+
+footer{padding:34px 0;border-top:1px solid var(--line);color:var(--muted);font-size:13.5px;text-align:center}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="top"><div class="wrap">
+  <div class="brand">IBCC <b>·</b> رحلة الدخول</div>
+  <nav id="nav">
+    <a href="#s1">المطعم</a><a href="#s2">المحاكي</a><a href="#s3">الـSerializer</a>
+    <a href="#s4">التوكن</a><a href="#s5">اختبار</a><a href="#s6">المسرد</a>
+  </nav>
+</div></header>
+
+<div class="hero"><div class="wrap">
+  <div class="eyebrow">IBCC · Study Guide · Lesson 01</div>
+  <h1>ماذا يحدث عندما تضغط<br><span>«دخول»؟</span></h1>
+  <p>جرّب بنفسك: اكتب، اضغط، وشاهد الطلب يتحرك بين React وDRF وقاعدة البيانات خطوة بخطوة.</p>
+  <a class="cta" href="#s2">▶ ابدأ المحاكاة</a>
+  <div class="hero-flow" aria-hidden="true">
+    <div class="hf">React</div><div class="ha">←</div>
+    <div class="hf">DRF</div><div class="ha">←</div>
+    <div class="hf">Serializer</div><div class="ha">←</div>
+    <div class="hf">PostgreSQL</div>
+  </div>
+</div></div>
+
+<!-- 1 restaurant -->
+<section class="blk" id="s1"><div class="wrap">
+  <div class="sh"><span class="n">01</span><h2>الصورة الكبيرة: مطعم</h2></div>
+  <p class="sub">اضغط على أي بطاقة لترى ما يقابلها في الكود.</p>
+  <div class="cards" id="cards"></div>
+</div></section>
+
+<!-- 2 simulator -->
+<section class="blk" id="s2"><div class="wrap">
+  <div class="sh"><span class="n">02</span><h2>المحاكي: شاهد الطلب يتحرك</h2></div>
+  <p class="sub">اختر سيناريو أو اكتب من عندك، ثم اضغط «دخول». الحساب التجريبي: <code>demo@cc-ingenieure.de</code> وكلمة السر <code>Demo1234</code> (وهمي، والمحاكاة تعمل داخل المتصفح ولا تتصل بأي خادم).</p>
+  <div class="sim">
+    <div class="col">
+      <div class="card"><h3>السيناريو</h3><div class="chips" id="scen"></div></div>
+      <div class="loginbox card" style="padding:0" id="lbox">
+        <div class="toast" id="toast"></div>
+        <div class="lh">تسجيل الدخول</div>
+        <div class="lb" id="lform">
+          <div class="fld" id="f-email"><label for="email">البريد الإلكتروني</label><input id="email" type="text" autocomplete="off" spellcheck="false"><div class="em" id="e-email"></div></div>
+          <div class="fld" id="f-pass"><label for="pass">كلمة السر</label><input id="pass" type="text" autocomplete="off" spellcheck="false"><div class="em" id="e-pass"></div></div>
+          <button class="go" id="go"><span class="spin"></span><span id="gotxt">دخول ←</span></button>
+        </div>
+        <div class="dash" id="dash"><div class="big">✔ لوحة التحكم</div><p style="color:var(--muted);margin-top:6px">navigate('/dashboard')</p><button class="btn" id="again" style="margin-top:14px">إعادة</button></div>
+      </div>
+      <div class="card">
+        <div class="ctrls">
+          <button class="btn p" id="bplay">⏸ إيقاف</button>
+          <button class="btn" id="bprev">⏮</button>
+          <button class="btn" id="bnext">⏭ التالي</button>
+          <button class="btn" id="breset">↺ إعادة</button>
+          <select class="btn" id="bspeed" aria-label="السرعة"><option value="1.6">بطيء</option><option value="1" selected>عادي</option><option value="0.5">سريع</option></select>
+        </div>
+        <div class="prog"><i id="prog"></i></div>
+      </div>
+      <div class="card info" id="info"><div class="st">—</div><h4>اضغط «دخول» لتبدأ</h4><p>سيظهر هنا شرح كل خطوة، ومكانها في الكود.</p></div>
+      <div class="card"><h3>حالة التطبيق الآن</h3><div class="state" id="state"></div></div>
+    </div>
+    <div class="diagram" id="diagram"></div>
+  </div>
+</div></section>
+
+<!-- 3 serializer -->
+<section class="blk" id="s3"><div class="wrap">
+  <div class="sh"><span class="n">03</span><h2>الـSerializer: ورقة الطلب</h2></div>
+  <p class="sub">عدّل الـJSON كما تشاء وانظر ماذا يقول الخادم. بدّل «الصارم» لترى الفرق بين النادل العادي والنادل الصارم.</p>
+  <div class="play">
+    <div class="col">
+      <div class="chips" id="presets"></div>
+      <div class="chips" id="schemas"></div>
+      <ul class="rules" id="rules"></ul>
+      <textarea class="json" id="json" spellcheck="false"></textarea>
+      <div class="ctrls"><div class="tgl"><button class="sw on" id="strict" aria-label="StrictFields"></button><span id="strictl">StrictFields: مفعّل</span></div><button class="btn p" id="runv">أرسل إلى الخادم</button></div>
+    </div>
+    <div class="verdict" id="verdict"><div class="code-big">—</div><div class="why">اضغط «أرسل إلى الخادم».</div></div>
+  </div>
+</div></section>
+
+<!-- 4 token -->
+<section class="blk" id="s4"><div class="wrap">
+  <div class="sh"><span class="n">04</span><h2>التوكن: ماذا يحدث مع الوقت؟</h2></div>
+  <p class="sub">بعد الدخول يحمل المتصفح بطاقتين: <b>access</b> (8 ساعات) و<b>refresh</b> (7 أيام). حرّك الزمن وشاهد مسار أي طلب جديد.</p>
+  <div class="rf">
+    <div class="col">
+      <div class="card">
+        <h3>مرّ من الوقت: <span id="tlabel" class="lat">0 h</span></h3>
+        <input type="range" id="trange" min="0" max="200" value="1">
+        <div class="bars">
+          <div class="bar"><i id="ba" style="background:var(--gold);opacity:.85"></i><span><b class="lat">access</b><em id="bat" style="font-style:normal"></em></span></div>
+          <div class="bar"><i id="br" style="background:var(--blue);opacity:.8"></i><span style="color:var(--navy)"><b class="lat">refresh</b><em id="brt" style="font-style:normal"></em></span></div>
+        </div>
+        <div class="state" id="ls" style="margin-top:10px"></div>
+      </div>
+    </div>
+    <div class="diagram" id="rflow"></div>
+  </div>
+</div></section>
+
+<!-- 5 quiz -->
+<section class="blk" id="s5"><div class="wrap">
+  <div class="sh"><span class="n">05</span><h2>اختبر نفسك</h2></div>
+  <div class="qz" id="quiz"></div>
+  <div class="score" id="score"></div>
+</div></section>
+
+<!-- 6 glossary -->
+<section class="blk" id="s6"><div class="wrap">
+  <div class="sh"><span class="n">06</span><h2>المسرد</h2></div>
+  <input class="gs" id="gsearch" placeholder="ابحث عن مصطلح…" aria-label="بحث">
+  <div class="gl" id="gl"></div>
+</div></section>
+
+<footer><div class="wrap">محتوى تعليمي مأخوذ من كود IBCC بتاريخ 2026-11-13 · المحاكاة تعمل في المتصفح فقط · الحساب والتوكنات المعروضة وهمية</div></footer>
+
+<script>
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const C={navy:'#101540',blue:'#1E2C87',gold:'#DE7A0F',purple:'#A118A0',green:'#1C8B23',red:'#b23b3b',muted:'#5b6080'};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+/* ───── 1. restaurant cards ───── */
+const CARDS=[
+ {ar:'الزبون',emoji:'🙂',lat:'React',c:C.blue,s:'#eef1fb',d:'الشاشة التي أمام الموظف',code:'frontend/src/pages/Login.jsx'},
+ {ar:'النادل',emoji:'🛎',lat:'DRF',c:C.gold,s:'#fdf3e6',d:'ينقل الطلب بترتيب (JSON)',code:'backend/config/urls.py:49'},
+ {ar:'ورقة الطلب',emoji:'📋',lat:'Serializer',c:C.purple,s:'#f6e9f6',d:'تحدد الخانات وتردّ الغلط',code:'accounts/serializers.py:214'},
+ {ar:'المطبخ',emoji:'🍳',lat:'Django + PostgreSQL',c:C.green,s:'#ecf5ed',d:'المستخدمون وكلمات السر',code:'accounts/models.py:167'}
+];
+$('#cards').innerHTML=CARDS.map(k=>`<div class="flip" tabindex="0" style="--c:${k.c};--s:${k.s}"><div class="flip-in">
+ <div class="face"><div class="emoji">${k.emoji}</div><div class="big">${k.ar}</div><small>${k.d}</small><span class="hint">اضغط للقلب ↻</span></div>
+ <div class="face back"><div class="big">${k.lat}</div><code>${k.code}</code></div></div></div>`).join('');
+$$('.flip').forEach(f=>{const t=()=>f.classList.toggle('on');f.onclick=t;f.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();t()}}});
+
+/* ───── 2. simulator ───── */
+const DEMO={email:'demo@cc-ingenieure.de',pass:'Demo1234'};
+const SCEN=[
+ {id:'ok',t:'دخول ناجح',cls:'ok',email:DEMO.email,pass:DEMO.pass,mode:'screen'},
+ {id:'mail',t:'بريد غير صالح',cls:'bad',email:'ahmed',pass:'Demo1234',mode:'screen'},
+ {id:'short',t:'كلمة سر قصيرة',cls:'bad',email:DEMO.email,pass:'123',mode:'screen'},
+ {id:'wrong',t:'كلمة سر خاطئة',cls:'bad',email:DEMO.email,pass:'Wrong1234',mode:'screen'},
+ {id:'direct',t:'طلب مباشر بحقل زائد',cls:'bad',email:DEMO.email,pass:DEMO.pass,mode:'direct'}
+];
+let sc=SCEN[0], mode='screen';
+$('#scen').innerHTML=SCEN.map(s=>`<button class="chip ${s.cls}" data-id="${s.id}">${s.t}</button>`).join('');
+function pick(id){sc=SCEN.find(s=>s.id===id);mode=sc.mode;$('#email').value=sc.email;$('#pass').value=sc.pass;
+  $$('#scen .chip').forEach(c=>c.classList.toggle('on',c.dataset.id===id));resetAll();
+  if(mode==='direct'){setInfo('—','طلب مباشر','هذا السيناريو لا يستخدم الشاشة أصلاً: سكربت خارجي يرسل JSON فيه حقل زائد. اضغط «دخول» لترى ماذا يفعل الخادم.','','سيناريو يثبت أن فحص React وحده لا يكفي.')}}
+$('#scen').onclick=e=>{const b=e.target.closest('.chip');if(b)pick(b.dataset.id)};
+['#email','#pass'].forEach(s=>$(s).addEventListener('input',()=>{if(mode==='direct'){mode='screen';$$('#scen .chip').forEach(c=>c.classList.remove('on'))}}));
+
+const LAN=[{x:80,ar:'المستخدم',en:'User',c:C.navy},{x:245,ar:'React',en:'المتصفح',c:C.blue},{x:425,ar:'DRF',en:'Serializer',c:C.gold},{x:600,ar:'القاعدة',en:'PostgreSQL',c:C.green}];
+const RE=/\S+@\S+\.\S+/;
+const M=(f,t,label,title,desc,code,ana,ap)=>({k:'msg',f,t,label,title,desc,code,ana,ap});
+const R=(f,t,label,title,desc,code,ana,ap)=>({k:'ret',f,t,label,title,desc,code,ana,ap});
+const N=(l,label,title,desc,code,ana,ap)=>({k:'note',f:l,t:l,label,title,desc,code,ana,ap});
+
+function build(email,pass,mode){
+ const S=[];
+ if(mode==='direct'){
+  S.push(M(0,2,'POST {email,password,coupon}','سكربت خارجي يرسل الطلب','أي شخص يقدر يرسل طلباً للخادم بدون المرور بالشاشة. فتحقق React لا يحميه.','','شخص يسلّم ورقة طلب كتبها بيده خارج المطعم',s=>{s.form={email,password:pass,coupon:'X'};s.response=null}));
+  S.push(N(2,'Serializer: حقل غير معرّف','الـSerializer يرفض الخانة الزائدة','StrictFields يقارن مفاتيح الطلب بالخانات المعروفة. وجد «coupon» غير معرّف فرفض الطلب كله.','common/serializers.py:39','نادل صارم: ما عندنا خانة اسمها coupon',null));
+  S.push(R(2,0,'400 {"coupon":"Unknown field."}','رد 400 مع اسم الخانة','يرجع الخادم خطأ 400 ومعه اسم الخانة المرفوضة، ولا يلمس القاعدة أبداً.','','الورقة تُردّ لصاحبها قبل أن تصل المطبخ',s=>{s.response='400 {"coupon":"Unknown field."}'}));
+  return S}
+ S.push(M(0,1,'يكتب البريد وكلمة السر','المستخدم يكتب','كل حرف يُكتب يحدّث ذاكرة القطعة (state) باسم form.','Login.jsx:37 — handleChange','الزبون يكتب طلبه',s=>{s.form={email,password:pass}}));
+ S.push(M(0,1,'يضغط «دخول»','يضغط الزر','الضغط يشغّل handleSubmit. أول شيء: منع إعادة تحميل الصفحة ثم فحص محلي.','Login.jsx:42 — handleSubmit','الزبون يسلّم الورقة للنادل',null));
+ const eerr=!email?'Email is required':(!RE.test(email)?'Enter a valid email address':null);
+ const perr=!pass?'Password is required':(pass.length<6?'Password must be at least 6 characters':null);
+ if(eerr||perr){
+  S.push(N(1,'validate() ← فشل','الفحص المحلي يفشل','validate() وجد خطأ في الحقول، فتوقف هنا: لا طلب يخرج من المتصفح، والخطأ يظهر تحت الحقل.','Login.jsx:28 — validate','يراجع ورقته قبل التسليم فيجد خطأ فيصلحه',s=>{s.errors={};if(eerr)s.errors.email=eerr;if(perr)s.errors.password=perr}));
+  return S}
+ S.push(N(1,'validate() ← سليم','الفحص المحلي ينجح','البريد بشكل صحيح وكلمة السر 6 حروف فأكثر. نكمل.','Login.jsx:28 — validate','الورقة تبدو مكتملة',s=>{s.errors={}}));
+ S.push(N(1,'setLoading ← login()','تجهيز الإرسال','الزر ينتظر (loading) ثم تُستدعى login() من AuthContext.','AuthContext.jsx:41 — login','النادل يحمل الورقة',s=>{s.loading=true}));
+ S.push(M(1,2,'POST /api/v1/auth/login/','الطلب يعبر الشبكة','axios يرسل POST بجسم JSON {email, password} ويضيف ترويسة اللغة.','lib/api.js — axios','الطريق إلى المطبخ',null));
+ S.push(N(2,'LoginView → Serializer','باب الخادم','المسار يصل إلى LoginView (مسموح للزائر)، فيمرر البيانات إلى الـSerializer ليفحص الورقة.','config/urls.py:49 · accounts/urls.py:17 · views.py:29','فحص الورقة قبل المطبخ',null));
+ S.push(M(2,3,'ابحث بالبريد وقارن','البحث في القاعدة','يبحث عن مستخدم بهذا البريد (حقل الدخول USERNAME_FIELD=email) ويقارن كلمة السر.','accounts/models.py:167','الطباخ يفتح سجل الزبائن',null));
+ const ok=email.toLowerCase()===DEMO.email&&pass===DEMO.pass;
+ if(!ok){
+  S.push(R(3,2,'لا تطابق','النتيجة: لا تطابق','لا يوجد مستخدم بهذا الاسم وكلمة السر.','','السجل ما فيه هذا الزبون',null));
+  S.push(R(2,1,'401 + detail','رد 401','يرد الخادم 401 مع رسالة detail (السلوك المعتاد لمكتبة SimpleJWT).','accounts/views.py:29','المطبخ يرفض',s=>{s.response='401 {"detail":"No active account found…"}'}));
+  S.push(N(1,'catch → toast + setLoading(false)','React يعرض الرسالة','يقرأ الرسالة من err.response.data، يعرضها بإشعار (toast) ويضعها في errors.general، ثم يعيد الزر لوضعه الطبيعي.','Login.jsx — handleSubmit (catch / finally)','النادل يعتذر للزبون',s=>{s.loading=false;s.toast='No active account found with the given credentials';s.errors={general:'…'}}));
+  return S}
+ S.push(R(3,2,'تطابق ✔','النتيجة: تطابق','وُجد المستخدم وكلمة السر صحيحة.','','الطباخ يجد الزبون',null));
+ S.push(N(2,'يبني access + refresh + user','بناء بطاقة الدخول','تُبنى بطاقتان: access (8 ساعات) وrefresh (7 أيام)، وتُضاف ادعاءات (دور، لغة، ثيم) وبيانات المستخدم.','accounts/serializers.py:221 · settings.py:527','تُصدر له بطاقة دخول بتاريخ انتهاء',null));
+ S.push(R(2,1,'200 JSON','رد 200','يرجع الخادم {access, refresh, user}.','','النادل يحمل الجواب',s=>{s.response='200 {access, refresh, user}'}));
+ S.push(N(1,'localStorage + setUser','المتصفح يحفظ البطاقات','يُخزَّن access_token وrefresh_token وuser في localStorage، وتُحدَّث الحالة، ثم يُطلب /auth/me/ في الخلفية لتحديث الصلاحيات.','AuthContext.jsx:45','الزبون يحتفظ بالبطاقة في جيبه',s=>{s.loading=false;s.storage={access_token:'eyJhbGciOi…(demo)',refresh_token:'eyJhbGciOi…(demo)',user:'{…}'}}));
+ S.push(N(1,"navigate('/dashboard')",'الانتقال للوحة','React Router ينقل المستخدم إلى /dashboard.','Login.jsx — handleSubmit','يدخلونه الصالة',s=>{s.page='dash'}));
+ S.push(R(1,0,'يرى لوحة التحكم','انتهت الرحلة','المستخدم أمام لوحة التحكم، وكل طلب قادم سيحمل بطاقة access تلقائياً.','','وصل إلى طاولته',null));
+ return S}
+
+/* render diagram */
+const ROW=52,TOP=96;
+let STEPS=[],IDX=-1,PLAYING=true,TOK=0,CUR=null;
+function drawDiagram(steps,lanesLabels){
+ const H=TOP+ROW*steps.length+20;
+ let s=`<svg viewBox="0 0 680 ${H}" role="img" aria-label="مخطط التسلسل"><defs><marker id="m1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="${C.navy}"/></marker><marker id="m2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="${C.green}"/></marker><marker id="m3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="${C.red}"/></marker></defs>`;
+ LAN.forEach((l,i)=>{const lab=lanesLabels?lanesLabels[i]:l.ar;
+  s+=`<line x1="${l.x}" y1="${TOP-16}" x2="${l.x}" y2="${H-8}" stroke="${l.c}" stroke-opacity=".3" stroke-width="2" stroke-dasharray="5 5"/>
+  <rect x="${l.x-62}" y="12" width="124" height="52" rx="12" fill="${l.c}"/>
+  <text x="${l.x}" y="36" text-anchor="middle" fill="#fff" font-size="16" font-weight="700">${lab}</text>
+  <text x="${l.x}" y="55" text-anchor="middle" fill="#fff" font-size="11" opacity=".85" style="direction:ltr">${l.en}</text>`});
+ steps.forEach((st,i)=>{const y=TOP+i*ROW+18;const xa=LAN[st.f].x,xb=LAN[st.t].x;const bad=/401|400|فشل|لا تطابق/.test(st.label);
+  s+=`<g class="row" id="row${i}">`;
+  if(st.k==='note'){const w=200;
+   s+=`<rect class="hl" x="${xa-w/2}" y="${y-18}" width="${w}" height="36" rx="9" fill="${bad?'#f9ecec':'#eef1fb'}" stroke="${bad?C.red:C.blue}" stroke-width="1.5"/>
+   <text x="${xa}" y="${y+5}" text-anchor="middle" font-size="12" fill="${C.navy}" style="direction:ltr">${esc(st.label)}</text>
+   <circle cx="${xa-w/2-2}" cy="${y-18}" r="11" fill="${bad?C.red:C.blue}"/><text x="${xa-w/2-2}" y="${y-13.5}" text-anchor="middle" font-size="12" fill="#fff" font-weight="700">${i+1}</text>`}
+  else{const d=xb>xa?1:-1,ret=st.k==='ret',col=bad?C.red:(ret?C.green:C.navy),mk=bad?'m3':(ret?'m2':'m1');
+   s+=`<line class="hl" x1="${xa+d*6}" y1="${y}" x2="${xb-d*8}" y2="${y}" stroke="${col}" stroke-width="2.4" ${ret?'stroke-dasharray="6 4"':''} marker-end="url(#${mk})"/>
+   <text x="${(xa+xb)/2}" y="${y-8}" text-anchor="middle" font-size="12" fill="${C.navy}" style="direction:ltr;paint-order:stroke;stroke:#fff;stroke-width:4px">${esc(st.label)}</text>
+   <circle cx="${xa+d*2}" cy="${y+15}" r="11" fill="${bad?C.red:(ret?C.green:C.gold)}"/><text x="${xa+d*2}" y="${y+19.5}" text-anchor="middle" font-size="12" fill="#fff" font-weight="700">${i+1}</text>`}
+  s+='</g>'});
+ s+=`<circle id="pk" r="9" fill="${C.gold}" stroke="#fff" stroke-width="3" opacity="0"/></svg>`;
+ $('#diagram').innerHTML=s}
+
+/* state */
+let ST;
+const freshState=()=>({form:{email:'',password:''},errors:{},loading:false,toast:null,page:'login',storage:null,response:null});
+function showState(){
+ const j=(k,v,cls)=>`<span class="k">${k}</span>: <span class="${cls||''}">${esc(typeof v==='string'?'"'+v+'"':JSON.stringify(v))}</span>`;
+ const lsv=ST.storage?JSON.stringify(ST.storage,null,1).replace(/\n\s*/g,' '):'(فارغ)';
+ $('#state').innerHTML=[j('form',ST.form),j('errors',ST.errors,Object.keys(ST.errors).length?'r':''),j('loading',ST.loading),j('response',ST.response||'—',ST.response&&ST.response[0]!=='2'?'r':'s'),j('localStorage',lsv,ST.storage?'s':'')].join('\n');
+ $('#f-email').classList.toggle('err',!!ST.errors.email);$('#e-email').textContent=ST.errors.email||'';
+ $('#f-pass').classList.toggle('err',!!ST.errors.password);$('#e-pass').textContent=ST.errors.password||'';
+ $('#lbox').classList.toggle('loading',ST.loading);
+ const t=$('#toast');if(ST.toast){t.textContent=ST.toast;t.classList.add('show')}else t.classList.remove('show');
+ $('#lform').classList.toggle('hide',ST.page==='dash');$('#dash').classList.toggle('show',ST.page==='dash')}
+function recompute(upto){ST=freshState();for(let i=0;i<=upto;i++){const a=STEPS[i].ap;if(a)a(ST)}showState()}
+
+function setInfo(n,title,desc,code,ana){
+ $('#info').innerHTML=`<div class="st">${n}</div><h4>${esc(title)}</h4><p>${esc(desc)}</p>${ana?`<div class="ana">🍽 ${esc(ana)}</div>`:''}${code?`<span class="code lat">${esc(code)}</span>`:''}`}
+
+function showStep(i,animate){
+ IDX=i;
+ STEPS.forEach((_,k)=>{const r=$('#row'+k);if(!r)return;r.classList.toggle('show',k<=i);r.classList.toggle('cur',k===i)});
+ recompute(i);
+ const st=STEPS[i];setInfo('الخطوة '+(i+1)+' من '+STEPS.length,st.title,st.desc,st.code,st.ana);
+ $('#prog').style.width=((i+1)/STEPS.length*100)+'%';
+ $('#bprev').disabled=i<=0;$('#bnext').disabled=i>=STEPS.length-1;
+ const pk=$('#pk');if(!pk)return;const y=TOP+i*ROW+18;
+ if(animate&&st.k!=='note'){pk.setAttribute('opacity',1);const x0=LAN[st.f].x,x1=LAN[st.t].x,dur=650*parseFloat($('#bspeed').value);const t0=performance.now();
+   (function tick(n){const p=Math.min(1,(n-t0)/dur);pk.setAttribute('cx',x0+(x1-x0)*p);pk.setAttribute('cy',y);if(p<1&&CUR===i)requestAnimationFrame(tick)})(t0);}
+ else if(st.k==='note'){pk.setAttribute('opacity',1);pk.setAttribute('cx',LAN[st.f].x+112);pk.setAttribute('cy',y)}
+ else{pk.setAttribute('opacity',1);pk.setAttribute('cx',LAN[st.t].x);pk.setAttribute('cy',y)}
+ CUR=i;
+ const box=$('#diagram'),r=$('#row'+i);
+ if(r&&box){const rb=r.getBoundingClientRect(),bb=box.getBoundingClientRect();const target=box.scrollTop+(rb.top-bb.top)-box.clientHeight/2+20;box.scrollTo({top:Math.max(0,target),behavior:animate?'smooth':'auto'})}}
+
+function schedule(){const tok=++TOK;if(!PLAYING)return;
+ setTimeout(()=>{if(tok!==TOK||!PLAYING)return;if(IDX<STEPS.length-1){showStep(IDX+1,true);schedule()}else{PLAYING=false;$('#bplay').textContent='▶ شغّل'}},1500*parseFloat($('#bspeed').value))}
+
+function run(){
+ const email=$('#email').value.trim(),pass=$('#pass').value;
+ STEPS=build(email,pass,mode);
+ drawDiagram(STEPS,mode==='direct'?['سكربت خارجي',null,null,null].map((v,i)=>v||LAN[i].ar):null);
+ IDX=-1;CUR=null;PLAYING=true;$('#bplay').textContent='⏸ إيقاف';
+ $('#go').disabled=true;$('#email').disabled=$('#pass').disabled=true;
+ showStep(0,true);schedule()}
+function resetAll(){TOK++;PLAYING=false;STEPS=[];IDX=-1;CUR=null;ST=freshState();showState();$('#diagram').innerHTML='<div style="padding:60px 20px;text-align:center;color:var(--muted)">اضغط «دخول» ليظهر المخطط هنا</div>';
+ $('#go').disabled=false;$('#email').disabled=$('#pass').disabled=false;$('#prog').style.width='0';$('#bprev').disabled=$('#bnext').disabled=true;$('#bplay').textContent='⏸ إيقاف'}
+$('#go').onclick=run;
+$('#bplay').onclick=()=>{if(!STEPS.length)return;PLAYING=!PLAYING;$('#bplay').textContent=PLAYING?'⏸ إيقاف':'▶ شغّل';if(PLAYING){if(IDX>=STEPS.length-1)showStep(0,true);schedule()}else TOK++};
+$('#bnext').onclick=()=>{PLAYING=false;TOK++;$('#bplay').textContent='▶ شغّل';if(IDX<STEPS.length-1)showStep(IDX+1,true)};
+$('#bprev').onclick=()=>{PLAYING=false;TOK++;$('#bplay').textContent='▶ شغّل';if(IDX>0)showStep(IDX-1,false)};
+$('#breset').onclick=()=>{pick(sc.id)};
+$('#again').onclick=()=>{pick(sc.id)};
+$('#bspeed').onchange=()=>{if(PLAYING)schedule()};
+pick('ok');
+
+/* ───── 3. serializer playground ───── */
+const SCHEMAS={
+ login:{t:'تسجيل الدخول',fields:['email','password'],req:['email','password'],rules:['الخانات المعروفة: email و password','كلاهما مطلوب','أي مفتاح آخر = خانة غير معرّفة'],
+  presets:[['صحيح','{"email":"demo@cc-ingenieure.de","password":"Demo1234"}'],['ناقص','{"email":"demo@cc-ingenieure.de"}'],['حقل زائد','{"email":"demo@cc-ingenieure.de","password":"Demo1234","coupon":"X"}'],['ليس كائناً','[1,2]']]},
+ project:{t:'إنشاء مشروع (مثال مبسّط)',fields:['name','project_type_id'],req:['name','project_type_id'],rules:['الخانات المعروفة: name و project_type_id','كلاهما مطلوب','هذا مثال مبسّط للحادثة التي أنتجت قاعدة StrictFields'],
+  presets:[['صحيح','{"name":"جسر الغدير","project_type_id":3}'],['الحادثة: project_type','{"name":"جسر الغدير","project_type":3}'],['ناقص','{"name":"جسر الغدير"}']]}
+};
+let SK='login',STRICT=true;
+function loadSchema(k){SK=k;const s=SCHEMAS[k];
+ $('#schemas').innerHTML=Object.keys(SCHEMAS).map(x=>`<button class="chip ${x===k?'on':''}" data-k="${x}">${SCHEMAS[x].t}</button>`).join('');
+ $('#presets').innerHTML=s.presets.map((p,i)=>`<button class="chip" data-i="${i}">${p[0]}</button>`).join('');
+ $('#rules').innerHTML=s.rules.map(r=>`<li>${r}</li>`).join('');$('#json').value=s.presets[0][1];verdict()}
+$('#schemas').onclick=e=>{const b=e.target.closest('.chip');if(b)loadSchema(b.dataset.k)};
+$('#presets').onclick=e=>{const b=e.target.closest('.chip');if(b){$('#json').value=SCHEMAS[SK].presets[b.dataset.i][1];verdict()}};
+$('#strict').onclick=()=>{STRICT=!STRICT;$('#strict').classList.toggle('on',STRICT);$('#strictl').textContent='StrictFields: '+(STRICT?'مفعّل':'معطّل');verdict()};
+$('#runv').onclick=verdict;$('#json').addEventListener('input',verdict);
+function verdict(){
+ const s=SCHEMAS[SK],v=$('#verdict');let data;
+ const out=(code,c,soft,body,why)=>{v.style.setProperty('--c',c);v.style.setProperty('--s',soft);v.innerHTML=`<div class="code-big">${code}</div><pre>${esc(body)}</pre><div class="why">${why}</div>`};
+ try{data=JSON.parse($('#json').value)}catch(e){return out('400',C.red,'#f9ecec','JSON غير صالح','النص ليس JSON صحيحاً.')}
+ if(data===null||typeof data!=='object'||Array.isArray(data))return out('400',C.red,'#f9ecec','{"non_field_errors":["Invalid data. Expected a dictionary."]}','الجسم ليس كائناً. الـSerializer يردّه بـ400 بدل أن ينهار (مذكور في تعليقات الكود).');
+ const keys=Object.keys(data),unknown=keys.filter(k=>!s.fields.includes(k));
+ if(STRICT&&unknown.length){const o={};unknown.forEach(k=>o[k]='Unknown field.');return out('400',C.red,'#f9ecec',JSON.stringify(o,null,2),'النادل الصارم: خانة غير معرّفة، فرفض الورقة كلها وعرف المرسل خطأه فوراً.')}
+ const miss=s.req.filter(k=>!(k in data));
+ if(miss.length){const o={};miss.forEach(k=>o[k]=['This field is required.']);return out('400',C.gold,'#fdf3e6',JSON.stringify(o,null,2),'ورقة ناقصة: يعاد الطلب مع اسم الخانة الناقصة.')}
+ if(unknown.length)return out('200',C.red,'#f9ecec','OK — تم القبول','⚠ النادل العادي تجاهل بصمت: '+unknown.join('، ')+'. المرسل يظن أنها حُفظت وهي لم تُحفظ. هذا ما حدث فعلاً مع project_type.');
+ out('200',C.green,'#ecf5ed','OK — تمرّ الورقة إلى الفحص التالي','كل الخانات المعروفة موجودة ولا يوجد زائد.')}
+loadSchema('login');
+
+/* ───── 4. token / refresh ───── */
+function drawRefresh(){
+ const nd=(id,x,y,w,h,fill,stroke,lines)=>`<g class="nd" id="${id}"><rect x="${x-w/2}" y="${y-h/2}" width="${w}" height="${h}" rx="10" fill="${fill}" stroke="${stroke}" stroke-width="2" style="color:${stroke}"/>${lines.map((l,i)=>`<text x="${x}" y="${y+4+(i-(lines.length-1)/2)*16}" text-anchor="middle" font-size="12.5" fill="${C.navy}" font-weight="${i===0&&lines.length>1?700:400}" style="direction:ltr">${l}</text>`).join('')}</g>`;
+ const dm=(id,x,y,w,h,fill,stroke,lines)=>`<g class="nd" id="${id}"><polygon points="${x},${y-h/2} ${x+w/2},${y} ${x},${y+h/2} ${x-w/2},${y}" fill="${fill}" stroke="${stroke}" stroke-width="2" style="color:${stroke}"/>${lines.map((l,i)=>`<text x="${x}" y="${y+4+(i-(lines.length-1)/2)*15}" text-anchor="middle" font-size="12" font-weight="700" fill="${C.navy}">${l}</text>`).join('')}</g>`;
+ const ln=(id,d,c,mk,dash)=>`<path class="ln" id="${id}" d="${d}" fill="none" stroke="${c}" stroke-width="2.2" ${dash?'stroke-dasharray="6 4"':''} marker-end="url(#${mk})"/>`;
+ const lb=(x,y,t,c)=>`<text x="${x}" y="${y}" text-anchor="middle" font-size="12" font-weight="700" fill="${c}">${t}</text>`;
+ let s=`<svg viewBox="0 0 700 560"><defs><marker id="a1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="${C.navy}"/></marker><marker id="a2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="${C.green}"/></marker><marker id="a3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="${C.red}"/></marker></defs>`;
+ s+=nd('n1',140,36,200,40,'#eef1fb',C.blue,['أي طلب بعد الدخول']);
+ s+=ln('l1','M140 56V92',C.navy,'a1');
+ s+=nd('n2',140,112,220,46,'#eef1fb',C.blue,['interceptor','Authorization: Bearer access']);
+ s+=ln('l2','M140 135V168',C.navy,'a1');
+ s+=nd('n3',140,188,180,38,'#fdf3e6',C.gold,['الخادم']);
+ s+=ln('l3','M140 207V240',C.navy,'a1');
+ s+=dm('n4',140,282,180,76,'#fdf3e6',C.gold,['الرد 401؟']);
+ s+=ln('l4','M140 320V392',C.green,'a2')+lb(165,360,'لا',C.green);
+ s+=`<g class="nd" id="n5"><rect x="50" y="392" width="180" height="36" rx="18" fill="${C.green}" style="color:${C.green}"/><text x="140" y="415" text-anchor="middle" fill="#fff" font-weight="700" font-size="13">تظهر البيانات</text></g>`;
+ s+=ln('l5','M230 282H322',C.red,'a3')+lb(276,272,'نعم',C.red);
+ s+=dm('n6',410,282,180,80,'#eef1fb',C.blue,['يوجد','refresh_token؟']);
+ s+=ln('l6','M500 282H588',C.red,'a3')+lb(544,272,'لا',C.red);
+ s+=nd('n7',630,282,120,46,'#f9ecec',C.red,['يمسح التوكنات','← /login']);
+ s+=ln('l7','M410 322V380',C.green,'a2')+lb(432,356,'نعم',C.green);
+ s+=nd('n8',410,404,230,46,'#fdf3e6',C.gold,['POST','/v1/auth/token/refresh/']);
+ s+=ln('l8','M410 427V462',C.navy,'a1');
+ s+=dm('n9',410,500,180,70,'#fdf3e6',C.gold,['نجح؟']);
+ s+=ln('l9','M500 500H588',C.red,'a3')+lb(544,490,'لا',C.red);
+ s+=nd('n10',630,500,120,46,'#f9ecec',C.red,['يمسح التوكنات','← /login']);
+ s+=ln('l10','M410 535V545',C.green,'a2');
+ s+=`<g class="nd" id="n11"><rect x="300" y="540" width="220" height="1" opacity="0"/></g>`;
+ s+=`</svg>`;
+ /* the "save new access + retry" box sits to the left of n9 to keep inside the viewBox */
+ s=s.replace('<g class="nd" id="n11"><rect x="300" y="540" width="220" height="1" opacity="0"/></g>',
+  nd('n11',175,500,230,46,'#ecf5ed',C.green,['يحفظ access الجديد','ويعيد الطلب نفسه'])+ln('l11','M320 500H292',C.green,'a2')+ln('l12','M60 500H22V188H48',C.green,'a2',true)+`<text transform="translate(12 340) rotate(-90)" text-anchor="middle" font-size="12" font-weight="700" fill="${C.green}">إعادة الطلب</text>`);
+ $('#rflow').innerHTML=s}
+drawRefresh();
+function onTime(){
+ const h=+$('#trange').value;
+ $('#tlabel').textContent=h<24?h+' h':(h/24).toFixed(1)+' d ('+h+' h)';
+ const aL=8,rL=168;
+ $('#ba').style.width=Math.max(0,100-h/aL*100)+'%';$('#br').style.width=Math.max(0,100-h/rL*100)+'%';
+ $('#bat').textContent=h<aL?'متبقٍ '+(aL-h)+' ساعة':'منتهية';
+ $('#brt').textContent=h<rL?'متبقٍ '+(rL-h)+' ساعة':'منتهية';
+ const path=h<aL?'ok':(h<rL?'refresh':'out');
+ const on={ok:['n1','n2','n3','n4','n5','l1','l2','l3','l4'],
+  refresh:['n1','n2','n3','n4','n6','n8','n9','n11','l1','l2','l3','l5','l7','l8','l11','l12'],
+  out:['n1','n2','n3','n4','n6','n7','l1','l2','l3','l5','l6']}[path];
+ $$('#rflow .nd,#rflow .ln').forEach(e=>{const a=on.includes(e.id);e.classList.toggle('on',a);e.classList.toggle('dim',!a)});
+ const ls=path==='out'?'(فارغ — تحوّل المستخدم إلى /login)':JSON.stringify({access_token:h<aL?'eyJhbGciOi…':'(منتهي) ← يُستبدل',refresh_token:'eyJhbGciOi…',user:'{…}'},null,1).replace(/\n\s*/g,' ');
+ $('#ls').innerHTML='<span class="k">localStorage</span>: '+esc(ls)+'\n<span class="k">النتيجة</span>: '+({ok:'<span class="s">يمر الطلب مباشرة</span>',refresh:'<span class="s">يتجدد access تلقائياً ويُعاد الطلب</span>',out:'<span class="r">الدخول من جديد</span>'}[path])}
+$('#trange').oninput=onTime;onTime();
+
+/* ───── 5. quiz ───── */
+const Q=[
+ {q:'لماذا لا يكفي التحقق في React وحده؟',o:['لأن React بطيئة','لأن أي شخص يقدر يرسل طلباً للخادم بدون المرور بالشاشة','لأن المتصفح لا يدعم التحقق'],a:1,e:'الفحص في React للراحة. الفحص الذي لا يمكن تجاوزه هو فحص الـSerializer في الخادم.'},
+ {q:'ماذا يفعل StrictFields؟',o:['يرفض أي خانة غير معرّفة بـ400','يشفّر كلمة السر','يحذف الخانات الناقصة'],a:0,e:'بعد حادثة project_type مقابل project_type_id أصبحت القاعدة: كل Serializer للكتابة يرفض المفاتيح غير المعرّفة.'},
+ {q:'كلمة السر 4 حروف: هل يصل الطلب إلى الخادم؟',o:['نعم دائماً','لا، validate() يوقفه في المتصفح','فقط إذا كان البريد صحيحاً'],a:1,e:'validate() يشترط 6 حروف فأكثر فيتوقف الطلب في المتصفح (Login.jsx:28).'},
+ {q:'ما الفرق بين DRF والـSerializer بمثال المطعم؟',o:['DRF هو النادل والـSerializer ورقة الطلب','DRF هو المطبخ والـSerializer الزبون','لا فرق'],a:0,e:'DRF هو الإطار الذي ينقل الطلب ويتكلم JSON، والـSerializer هو الذي يحدد الخانات ويفحصها.'},
+ {q:'انتهت صلاحية access وما زال refresh صالحاً. ماذا يحدث؟',o:['يُطلب من المستخدم الدخول من جديد','يتجدد access تلقائياً ويُعاد الطلب','يظهر خطأ 500'],a:1,e:'الـinterceptor في lib/api.js يلتقط 401 ويستدعي /v1/auth/token/refresh/ ثم يعيد الطلب.'}
+];
+let score=0,answered=0;
+$('#quiz').innerHTML=Q.map((q,i)=>`<div class="card q" id="q${i}"><h4>${i+1}. ${q.q}</h4>${q.o.map((o,j)=>`<button class="opt" data-q="${i}" data-j="${j}">${o}</button>`).join('')}<div class="ex">${q.e}</div></div>`).join('');
+$('#quiz').onclick=e=>{const b=e.target.closest('.opt');if(!b||b.disabled)return;const i=+b.dataset.q,j=+b.dataset.j,card=$('#q'+i);
+ $$('#q'+i+' .opt').forEach((x,k)=>{x.disabled=true;if(k===Q[i].a)x.classList.add('right')});
+ if(j===Q[i].a)score++;else b.classList.add('wrong');card.classList.add('done');answered++;
+ if(answered===Q.length)$('#score').textContent='نتيجتك: '+score+' من '+Q.length+(score===Q.length?' — ممتاز! 🎉':' — راجع الأقسام أعلاه وأعد المحاولة')};
+
+/* ───── 6. glossary ───── */
+const G=[
+['Form','نموذج إدخال: حقول وزر إرسال. عندنا يتكوّن من React للعرض وSerializer للتحقق.','عام'],
+['React','مكتبة JavaScript تبني الواجهة من قطع (components) وتعيد رسم القطعة المتغيّرة فقط.','واجهة'],
+['component','قطعة واجهة قابلة لإعادة الاستخدام، مثل Button وInput.','واجهة'],
+['state','ذاكرة صغيرة داخل القطعة (useState). تغيّرها يعيد رسم القطعة.','واجهة'],
+['props','بيانات تُعطى لقطعة من القطعة الأم، مثل label وvalue.','واجهة'],
+['axios','مكتبة ترسل طلبات HTTP من المتصفح إلى الخادم.','واجهة'],
+['interceptor','وسيط في axios يعدّل كل طلب قبل إرساله وكل رد قبل وصوله.','واجهة'],
+['localStorage','مخزن صغير داخل المتصفح يبقى بعد إغلاق الصفحة.','واجهة'],
+['toast','إشعار صغير ينبثق على الشاشة ثم يختفي.','واجهة'],
+['API','واجهة يتحدث بها برنامج مع برنامج. عندنا الخادم يعرض API بصيغة JSON.','خادم'],
+['JSON','نص منظّم: اسم الخانة ثم قيمتها.','خادم'],
+['DRF','Django REST Framework: مكتبة فوق Django تجعله يتكلم JSON.','خادم'],
+['Serializer','يحوّل JSON إلى بيانات Python ويتحقق منها، والعكس.','خادم'],
+['StrictFields','Serializer يرفض أي خانة غير معرّفة بـ400.','خادم'],
+['POST','نوع طلب HTTP يرسل بيانات للخادم (مثل إرسال النموذج).','خادم'],
+['endpoint','عنوان محدد في الـAPI مثل /api/v1/auth/login/.','خادم'],
+['200 / 400 / 401','نجاح / طلبك فيه مشكلة / غير مصرّح (بيانات دخول خاطئة أو منتهية).','خادم'],
+['JWT','بطاقة دخول موقّعة يحملها المتصفح بدل كلمة السر (الدرس 11).','أمان'],
+['access / refresh','بطاقة قصيرة العمر (8 ساعات) للطلبات، وبطاقة طويلة (7 أيام) لتجديدها.','أمان'],
+['Bearer','طريقة إرسال التوكن في ترويسة Authorization.','أمان'],
+['CSRF','حماية تمنع موقعاً آخر من إرسال نموذج باسمك (نموذج OAuth فقط عندنا).','أمان'],
+['PostgreSQL','قاعدة البيانات التي تُخزَّن فيها كل المعلومات.','بيانات']
+];
+function gl(q){q=(q||'').trim().toLowerCase();$('#gl').innerHTML=G.filter(g=>!q||(g[0]+g[1]+g[2]).toLowerCase().includes(q)).map(g=>`<div class="gi"><b>${esc(g[0])}</b> <span class="tag">${g[2]}</span><p>${g[1]}</p></div>`).join('')||'<p style="color:var(--muted)">لا نتائج</p>'}
+gl();$('#gsearch').oninput=e=>gl(e.target.value);
+
+/* nav highlight */
+const links=$$('#nav a');
+const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting)links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id))}),{rootMargin:'-40% 0px -55% 0px'});
+$$('section.blk').forEach(x=>io.observe(x));
+</script>
+</body>
+</html>
