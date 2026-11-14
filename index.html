@@ -191,6 +191,62 @@ input[type=range]{width:100%;accent-color:var(--gold)}
 .gi p{font-size:14px;color:#2b2f55;margin-top:2px}
 .gi .tag{font-size:12px;color:var(--gold)}
 
+/* ── term pages ── */
+html{scroll-padding-top:118px}
+header.top .wrap{display:block;height:auto;padding-block:8px}
+.hrow{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.terms{display:flex;gap:8px;flex-wrap:wrap;margin-inline-start:auto}
+.tbtn{display:inline-flex;align-items:center;gap:6px;padding:7px 16px;border-radius:12px;border:2px solid var(--line);font-weight:800;font-size:15px;text-decoration:none;color:var(--navy);background:#fff;transition:.2s;direction:ltr}
+.tbtn:hover:not(.dis){border-color:var(--gold);transform:translateY(-1px)}
+.tbtn.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.tbtn.dis{opacity:.5;cursor:not-allowed}
+.tbtn em{font-style:normal;font-size:11px;font-weight:500;direction:rtl}
+.tbtn .ck{color:var(--green);font-size:13px}
+.tbtn.on .ck{color:#7be08a}
+nav#nav{margin-top:6px;min-height:34px}
+main[hidden]{display:none}
+#diagram{top:118px}
+.df{border-bottom:1.6px dotted var(--gold);cursor:help}
+#tip{position:fixed;z-index:200;max-width:290px;background:var(--navy);color:#fff;padding:10px 14px;border-radius:12px;font-size:13.5px;line-height:1.65;box-shadow:var(--shadow);display:none;pointer-events:none}
+.mdual{display:grid;grid-template-columns:minmax(300px,1fr) minmax(300px,1fr);gap:20px;align-items:start}
+@media(max-width:940px){.mdual{grid-template-columns:1fr}}
+.codebox{background:#0f1330;color:#d6dcff;border-radius:14px;padding:14px 6px;font-family:var(--mono);font-size:13px;line-height:1.7;direction:ltr;text-align:left;overflow-x:auto}
+.codebox .cl{padding:3px 12px;border-radius:8px;cursor:pointer;white-space:pre;transition:.15s;border-left:3px solid transparent}
+.codebox .cl:hover,.codebox .cl.on{background:#ffffff18;border-left-color:var(--gold)}
+.codebox .ck1{color:#ffb865}.codebox .cs{color:#8ee0a0}.codebox .cm{color:#8a92c9}
+.tblwrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:#fff}
+table.dt{border-collapse:collapse;width:100%;font-size:13px;direction:ltr}
+table.dt th,table.dt td{padding:9px 12px;text-align:left;border-bottom:1px solid #1015400f;white-space:nowrap;transition:.15s}
+table.dt th{background:var(--soft-b);font-family:var(--mono);font-size:12px;color:var(--blue)}
+table.dt .hl{background:#de7a0f2e!important;box-shadow:inset 0 0 0 1.5px var(--gold)}
+table.dt tr:last-child td{border-bottom:none}
+.life{display:grid;grid-template-columns:minmax(300px,420px) 1fr;gap:22px;align-items:start}
+@media(max-width:980px){.life{grid-template-columns:1fr}}
+.trio{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+.trio .card:last-child{grid-column:1/-1}
+@media(max-width:600px){.trio{grid-template-columns:1fr}}
+#ldiag{padding:10px}
+.ldn{transition:.3s}
+.ldn.on rect{stroke-width:4;filter:drop-shadow(0 0 6px var(--gold))}
+.lar{transition:.3s;opacity:.25}
+.lar.on{opacity:1;stroke-width:4}
+#lplay-box.off{opacity:.45;pointer-events:none}
+#pcls,#pmig{white-space:pre;overflow-x:auto;max-height:none}
+.ph-empty{padding:18px;text-align:center;color:var(--muted);font-size:13.5px;border:2px dashed var(--line);border-radius:12px}
+.fkgrid{display:grid;grid-template-columns:1fr 1.4fr;gap:16px}
+@media(max-width:760px){.fkgrid{grid-template-columns:1fr}}
+.fkrow{display:flex;align-items:center;gap:10px;padding:8px 4px;border-bottom:1px solid #1015400f}
+.fkrow:last-child{border-bottom:none}
+.fkrow b{flex:1}
+.fkrow .cnt{font-size:12px;color:var(--muted)}
+.fkrow button{border:1.5px solid var(--red);color:var(--red);background:#fff;border-radius:8px;padding:3px 10px;font-size:12.5px;font-weight:700}
+.fkrow button:hover{background:var(--red);color:#fff}
+.rule1{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:760px){.rule1{grid-template-columns:1fr}}
+.r1{border-width:2px;transition:.3s}
+.r1.ok{border-color:var(--green);background:var(--soft-gr)}
+.r1.bad{border-color:var(--red);background:var(--soft-r)}
+.r1 .why{margin-top:8px;font-size:14px;font-weight:700}
 footer{padding:34px 0;border-top:1px solid var(--line);color:var(--muted);font-size:13.5px;text-align:center}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
@@ -198,15 +254,21 @@ footer{padding:34px 0;border-top:1px solid var(--line);color:var(--muted);font-s
 <body>
 
 <header class="top"><div class="wrap">
-  <div class="brand">IBCC <b>·</b> رحلة الدخول</div>
-  <nav id="nav">
-    <a href="#s1">المطعم</a><a href="#s2">المحاكي</a><a href="#s3">الـSerializer</a>
-    <a href="#s4">التوكن</a><a href="#s5">اختبار</a><a href="#s6">المسرد</a>
-  </nav>
+  <div class="hrow">
+    <div class="brand">IBCC <b>·</b> دليل الدراسة</div>
+    <div class="terms" id="terms">
+      <a class="tbtn" data-p="form" href="#form">1 Form <span class="ck">✔</span></a>
+      <a class="tbtn" data-p="model" href="#model">2 Model <span class="ck">✔</span></a>
+      <span class="tbtn dis" title="نشرحه بعد Model">3 View <em>قريباً</em></span>
+      <span class="tbtn dis" title="نشرحه بعد View">4 Template <em>قريباً</em></span>
+    </div>
+  </div>
+  <nav id="nav"></nav>
 </div></header>
 
+<main class="page" id="page-form">
 <div class="hero"><div class="wrap">
-  <div class="eyebrow">IBCC · Study Guide · Lesson 01</div>
+  <div class="eyebrow">IBCC · Study Guide · Term 01 · Form</div>
   <h1>ماذا يحدث عندما تضغط<br><span>«دخول»؟</span></h1>
   <p>جرّب بنفسك: اكتب، اضغط، وشاهد الطلب يتحرك بين React وDRF وقاعدة البيانات خطوة بخطوة.</p>
   <a class="cta" href="#s2">▶ ابدأ المحاكاة</a>
@@ -308,6 +370,103 @@ footer{padding:34px 0;border-top:1px solid var(--line);color:var(--muted);font-s
   <input class="gs" id="gsearch" placeholder="ابحث عن مصطلح…" aria-label="بحث">
   <div class="gl" id="gl"></div>
 </div></section>
+
+</main>
+
+<!-- ═════════════ MODEL PAGE ═════════════ -->
+<main class="page" id="page-model" hidden>
+<div class="hero"><div class="wrap">
+  <div class="eyebrow">IBCC · Study Guide · Term 02 · Model</div>
+  <h1>Model: <span>جدول البيانات</span><br>مكتوب بـPython</h1>
+  <p>الكلمات التي تحتها نقاط ذهبية <span class="df" data-k="model">مثل هذه</span> لها تعريف بسيط: اضغط عليها أو مرّر الفأرة.</p>
+  <a class="cta" href="#m2">▶ ابدأ</a>
+  <div class="hero-flow" aria-hidden="true">
+    <div class="hf">class Python</div><div class="ha">←</div>
+    <div class="hf">migration</div><div class="ha">←</div>
+    <div class="hf">PostgreSQL</div><div class="ha">←</div>
+    <div class="hf">صفوف</div>
+  </div>
+</div></div>
+
+<section class="blk" id="m1"><div class="wrap">
+  <div class="sh"><span class="n">01</span><h2>الصورة الكبيرة: دفتر</h2></div>
+  <p class="sub">الـ<span class="df" data-k="model">Model</span> هو دفتر للبيانات. اضغط البطاقة لترى ما يقابلها في الكود.</p>
+  <div class="cards" id="mcards"></div>
+</div></section>
+
+<section class="blk" id="m2"><div class="wrap">
+  <div class="sh"><span class="n">02</span><h2>الكود والجدول: وجهان لشيء واحد</h2></div>
+  <p class="sub">اضغط أو مرّر الفأرة على سطر في الكود فيضيء عموده في الجدول. المقتطف مبسّط من <code>User</code> في <code>accounts/models.py:66</code>، والبيانات في الجدول أمثلة وهمية.</p>
+  <div class="mdual">
+    <div class="codebox" id="codebox" dir="ltr"></div>
+    <div class="col">
+      <div class="tblwrap"><table class="dt" id="usertbl"></table></div>
+      <div class="card info" id="finfo"><div class="st">—</div><h4>اختر سطراً من الكود</h4><p>سيظهر هنا معناه وما يقابله في الجدول.</p></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="blk" id="m3"><div class="wrap">
+  <div class="sh"><span class="n">03</span><h2>دورة الحياة: من الكلاس إلى سطر في القاعدة</h2></div>
+  <p class="sub">خمس خطوات. في الخطوتين 4 و5 تجرّب بنفسك: أضف مشروعاً وابحث.</p>
+  <div class="life">
+    <div class="col">
+      <div class="card"><div class="ctrls">
+        <button class="btn p" id="lplay">⏸ إيقاف</button><button class="btn" id="lprev">⏮</button><button class="btn" id="lnext">⏭ التالي</button><button class="btn" id="lreset">↺ إعادة</button>
+      </div><div class="prog"><i id="lprog"></i></div></div>
+      <div class="card info" id="linfo"></div>
+      <div class="card" id="lplay-box">
+        <h3>جرّب بنفسك</h3>
+        <div class="fld"><label for="pname">name (اسم المشروع)</label><input id="pname" type="text" value="جسر الغدير" style="direction:rtl;text-align:right"></div>
+        <div class="fld" style="margin-top:8px"><label for="ptype">project_type (نوع المشروع)</label><select class="btn" id="ptype" style="width:100%"></select></div>
+        <button class="btn p" id="pcreate" style="margin-top:10px;width:100%">Project.objects.create(…)</button>
+        <div class="fld" style="margin-top:12px"><label for="pfilter">البحث: <span class="df" data-k="filter">filter</span></label><select class="btn" id="pfilter" style="width:100%"></select></div>
+        <div class="state" id="pcode" style="margin-top:8px;max-height:120px"></div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="diagram" id="ldiag"></div>
+      <div class="trio">
+        <div class="card"><h3>models.py</h3><div class="state" id="pcls" dir="ltr"></div></div>
+        <div class="card"><h3>migrations/</h3><div class="state" id="pmig" dir="ltr"></div></div>
+        <div class="card"><h3>PostgreSQL</h3><div class="tblwrap" id="pdb"></div></div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section class="blk" id="m4"><div class="wrap">
+  <div class="sh"><span class="n">04</span><h2>الروابط والحماية</h2></div>
+  <p class="sub">المشروع لا يحمل اسم نوعه، بل <span class="df" data-k="fk">رابطاً</span> إليه. جرّب حذف نوع مشروع وشاهد ماذا يحدث حسب <span class="df" data-k="on_delete">on_delete</span>.</p>
+  <div class="chips" id="odmode" style="margin-bottom:14px"></div>
+  <div class="fkgrid">
+    <div class="card"><h3>ProjectType</h3><div id="fktypes"></div></div>
+    <div class="card"><h3>Project</h3><div class="tblwrap" id="fkproj"></div></div>
+  </div>
+  <div class="verdict" id="fkres" style="margin-top:14px;min-height:72px"><div class="why">اضغط «حذف» بجانب أي نوع.</div></div>
+  <div class="sh" style="margin-top:34px"><span class="n">+</span><h2>لماذا لا نربط المنطق بالاسم؟ <span class="lat">(RULE #1)</span></h2></div>
+  <p class="sub">غيّر اسم المرحلة المعروض وشاهد أي كود ينكسر.</p>
+  <div class="ctrls" style="margin-bottom:12px"><button class="btn p" id="rn">غيّر اسم «LP2» إلى «التصميم المبدئي»</button><button class="btn" id="rnr">↺</button></div>
+  <div class="rule1">
+    <div class="card r1" id="r1a"><h3>✗ بالاسم</h3><div class="state" dir="ltr">if phase.name == "LP2":<br>&nbsp;&nbsp;&nbsp;&nbsp;...</div><div class="why" id="r1at"></div></div>
+    <div class="card r1" id="r1b"><h3>✓ بالمفتاح الثابت</h3><div class="state" dir="ltr">if phase.enum_key == 2:  # LP2<br>&nbsp;&nbsp;&nbsp;&nbsp;...</div><div class="why" id="r1bt"></div></div>
+  </div>
+</div></section>
+
+<section class="blk" id="m5"><div class="wrap">
+  <div class="sh"><span class="n">05</span><h2>اختبر نفسك</h2></div>
+  <div class="qz" id="mquiz"></div>
+  <div class="score" id="mscore"></div>
+</div></section>
+
+<section class="blk" id="m6"><div class="wrap">
+  <div class="sh"><span class="n">06</span><h2>كلمات بسيطة</h2></div>
+  <input class="gs" id="mgsearch" placeholder="ابحث عن كلمة…" aria-label="بحث">
+  <div class="gl" id="mgl"></div>
+</div></section>
+</main>
+
+<div id="tip" role="tooltip"></div>
 
 <footer><div class="wrap">محتوى تعليمي مأخوذ من كود IBCC بتاريخ 2026-11-13 · المحاكاة تعمل في المتصفح فقط · الحساب والتوكنات المعروضة وهمية</div></footer>
 
@@ -586,9 +745,188 @@ function gl(q){q=(q||'').trim().toLowerCase();$('#gl').innerHTML=G.filter(g=>!q|
 gl();$('#gsearch').oninput=e=>gl(e.target.value);
 
 /* nav highlight */
-const links=$$('#nav a');
-const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting)links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id))}),{rootMargin:'-40% 0px -55% 0px'});
+/* navigation + term pages: see second script */
+</script>
+<script>
+/* ═════════ shared: definitions, tooltips, routing ═════════ */
+const DEFS={
+ model:['Model','الوصف المكتوب بـPython لجدول في القاعدة: كلاس واحد = جدول واحد.'],
+ field:['Field','حقل = عمود في الجدول، مثل الاسم أو البريد.'],
+ object:['Object','كائن = سطر واحد من الجدول، مثل مشروع واحد.'],
+ class:['class','كلاس = قالب في Python. نصنع منه كائنات، كما نصنع من نموذج الدفتر أسطراً.'],
+ orm:['ORM','مترجم يحوّل كلام Python إلى أوامر قاعدة البيانات، فلا تكتبها بيدك.'],
+ sql:['SQL','لغة أوامر قواعد البيانات. مثال: «اعطني كل المشاريع التي حالتها نشطة».'],
+ migration:['migration','ملف يسجّل تغييراً في شكل الجدول (أضف عموداً، احذف عموداً) لينفَّذ على القاعدة بالترتيب.'],
+ makemigrations:['makemigrations','أمر يكتب ملف migration بما تغيّر في الـModel. لا يغيّر القاعدة بعد.'],
+ migrate:['migrate','أمر ينفّذ ملفات migration على القاعدة فعلياً، فيتكوّن الجدول أو يتغيّر.'],
+ fk:['ForeignKey','حقل يحمل «رقم السطر» في جدول آخر، كأنه إشارة: هذا المشروع نوعه كذا.'],
+ on_delete:['on_delete','ماذا يحدث لو حُذف السطر الذي نشير إليه؟ نختار: PROTECT أو CASCADE أو غيرها.'],
+ protect:['PROTECT','ممنوع حذف السطر المشار إليه ما دام هناك من يشير إليه.'],
+ cascade:['CASCADE','عند حذف السطر المشار إليه تُحذف معه كل الأسطر التي تشير إليه.'],
+ uuid:['UUID','رقم طويل فريد مثل a3f9… يُولَّد عشوائياً، بدل 1 و2 و3.'],
+ unique:['unique','ممنوع تكرار القيمة في عمودها، مثل البريد.'],
+ primary_key:['primary_key','العمود الذي يُعرَّف به السطر وحده.'],
+ null:['null=True','يجوز أن تكون القيمة «لا شيء» في القاعدة.'],
+ blank:['blank=True','يجوز ترك الحقل فارغاً في النموذج.'],
+ editable:['editable=False','لا يظهر ولا يُعدَّل من الواجهة. النظام يملؤه بنفسه.'],
+ manager:['objects','الباب الذي ندخل منه إلى كل أسطر الجدول: إنشاء، بحث، حذف.'],
+ queryset:['QuerySet','نتيجة بحث: قائمة أسطر لا تُجلب من القاعدة إلا عند الحاجة.'],
+ filter:['filter','يختار الأسطر التي تطابق شرطاً.'],
+ postgres:['PostgreSQL','برنامج قاعدة البيانات الذي يخزّن كل شيء فعلياً.'],
+ enumkey:['enum_key','رقم ثابت يعرّف المرحلة أو الحالة، لا يتغير حتى لو غيّرنا الاسم المعروض.'],
+ charfield:['CharField','حقل نص قصير بحدّ أقصى للحروف.'],
+ related:['related_name','اسم نستخدمه للرجوع من الطرف الآخر: كل مشاريع هذا النوع.']
+};
+$$('.df[data-k]').forEach(e=>{const d=DEFS[e.dataset.k];if(d){e.dataset.d=d[1];e.tabIndex=0}});
+const tip=$('#tip');
+function showTip(el){const d=el.dataset.d;if(!d)return;tip.textContent=d;tip.style.display='block';const r=el.getBoundingClientRect(),t=tip.getBoundingClientRect();
+ let x=r.left+r.width/2-t.width/2;x=Math.max(8,Math.min(innerWidth-t.width-8,x));let y=r.bottom+8;if(y+t.height>innerHeight-8)y=r.top-t.height-8;tip.style.left=x+'px';tip.style.top=y+'px'}
+document.addEventListener('mouseover',e=>{const el=e.target.closest('.df');if(el)showTip(el)});
+document.addEventListener('mouseout',e=>{if(e.target.closest('.df'))tip.style.display='none'});
+document.addEventListener('focusin',e=>{const el=e.target.closest('.df');if(el)showTip(el)});
+document.addEventListener('focusout',()=>tip.style.display='none');
+document.addEventListener('click',e=>{const el=e.target.closest('.df');if(el){showTip(el)}else tip.style.display='none'});
+addEventListener('scroll',()=>tip.style.display='none',{passive:true});
+
+const NAVS={
+ form:[['s1','المطعم'],['s2','المحاكي'],['s3','الـSerializer'],['s4','التوكن'],['s5','اختبار'],['s6','المسرد']],
+ model:[['m1','الدفتر'],['m2','الكود والجدول'],['m3','دورة الحياة'],['m4','الروابط والحماية'],['m5','اختبار'],['m6','كلمات بسيطة']]
+};
+let PAGE='form';
+function showPage(p){if(!NAVS[p])p='form';PAGE=p;
+ $$('.page').forEach(m=>m.hidden=m.id!=='page-'+p);
+ $$('#terms .tbtn[data-p]').forEach(a=>a.classList.toggle('on',a.dataset.p===p));
+ $('#nav').innerHTML=NAVS[p].map(n=>`<a href="#${n[0]}">${n[1]}</a>`).join('')}
+function route(){const h=location.hash.slice(1);
+ if(NAVS[h]){showPage(h);scrollTo(0,0);return}
+ const el=h&&document.getElementById(h);
+ if(el&&el.closest('.page')){showPage(el.closest('.page').id.replace('page-',''));el.scrollIntoView()}
+ else if(!el)showPage(PAGE)}
+addEventListener('hashchange',route);
+const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting&&en.target.closest('.page')&&!en.target.closest('.page').hidden)$$('#nav a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id))}),{rootMargin:'-40% 0px -55% 0px'});
 $$('section.blk').forEach(x=>io.observe(x));
+route();
+</script>
+<script>
+/* ═════════ MODEL PAGE ═════════ */
+const SAFE=(s)=>esc(s);
+/* 1. cards */
+const MC=[
+ {ar:'الجدول',emoji:'📒',lat:'Model',c:C.blue,s:'#eef1fb',d:'دفتر المشاريع',code:'class Project(...)'},
+ {ar:'العمود',emoji:'↕️',lat:'Field',c:C.gold,s:'#fdf3e6',d:'خانة: الاسم، العميل',code:'name = CharField(...)'},
+ {ar:'السطر',emoji:'🧾',lat:'Object',c:C.purple,s:'#f6e9f6',d:'مشروع واحد',code:'Project.objects.create(...)'},
+ {ar:'الرابط',emoji:'🔗',lat:'ForeignKey',c:C.green,s:'#ecf5ed',d:'سطر يشير إلى دفتر آخر',code:'project_type = ForeignKey(...)'}
+];
+$('#mcards').innerHTML=MC.map(k=>`<div class="flip" tabindex="0" style="--c:${k.c};--s:${k.s}"><div class="flip-in">
+ <div class="face"><div class="emoji">${k.emoji}</div><div class="big">${k.ar}</div><small>${k.d}</small><span class="hint">اضغط للقلب ↻</span></div>
+ <div class="face back"><div class="big">${k.lat}</div><code>${k.code}</code></div></div></div>`).join('');
+$$('#mcards .flip').forEach(f=>{const t=()=>f.classList.toggle('on');f.onclick=t;f.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();t()}}});
+
+/* 2. code <-> table */
+const UF=[
+ {f:'id',line:'id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)',t:'id: رقم فريد طويل',d:'رقم تعريف فريد طويل يولّده Python تلقائياً. هو هوية السطر، ولا يُعدَّل من الواجهة.',k:['uuid','primary_key','editable'],col:'uuid'},
+ {f:'email',line:'email = models.EmailField(unique=True)',t:'email: بريد لا يتكرر',d:'حقل بريد إلكتروني. unique يمنع أن يوجد مستخدمان بالبريد نفسه، والقاعدة نفسها ترفض ذلك.',k:['unique'],col:'varchar'},
+ {f:'first_name',line:'first_name = models.CharField(max_length=150)',t:'first_name: نص حتى 150 حرفاً',d:'نص قصير أقصاه 150 حرفاً. أي نص أطول تردّه القاعدة.',k:['charfield'],col:'varchar(150)'},
+ {f:'phone',line:'phone = models.CharField(max_length=30, blank=True)',t:'phone: يجوز تركه فارغاً',d:'نص قصير. blank=True يعني أن الحقل اختياري عند الحفظ.',k:['blank'],col:'varchar(30)'},
+ {f:'role',line:"role = models.ForeignKey('settings_mgmt.Role', on_delete=models.PROTECT, null=True, blank=True, related_name='users')",t:'role: رابط إلى جدول الأدوار',d:'لا نكتب اسم الدور داخل المستخدم، بل نحفظ إشارة إلى سطره في جدول Role. PROTECT يمنع حذف دور ما دام هناك مستخدمون به. null=True يجوز ألا يكون للمستخدم دور.',k:['fk','protect','null','related'],col:'FK'}
+];
+const UROWS=[['a3f9…','sara@example.com','Sara','',  'Manager'],['7c1e…','omar@example.com','Omar','+49 170 000','Engineer'],['e20b…','lina@example.com','Lina','','—']];
+$('#codebox').innerHTML='<div class="cl cm"># accounts/models.py (مبسّط)</div><div class="cl"><span class="ck1">class</span> User(AbstractBaseUser, PermissionsMixin):</div>'+UF.map(u=>`<div class="cl" data-f="${u.f}">    ${esc(u.line)}</div>`).join('');
+$('#usertbl').innerHTML='<thead><tr>'+UF.map(u=>`<th data-f="${u.f}">${u.f}${u.f==='role'?'_id':''}</th>`).join('')+'</tr></thead><tbody>'+UROWS.map(r=>'<tr>'+UF.map((u,i)=>`<td data-f="${u.f}">${i===4&&r[4]!=='—'?'→ '+esc(r[4]):esc(r[i]||'')||'<span style="color:#9aa0c8">∅</span>'}</td>`).join('')+'</tr>').join('')+'</tbody>';
+function pickField(f){
+ $$('#codebox .cl').forEach(l=>l.classList.toggle('on',l.dataset.f===f));
+ $$('#usertbl [data-f]').forEach(c=>c.classList.toggle('hl',c.dataset.f===f));
+ const u=UF.find(x=>x.f===f);if(!u)return;
+ $('#finfo').innerHTML=`<div class="st">العمود: ${u.f}${u.f==='role'?'_id':''} · النوع: ${u.col}</div><h4>${u.t}</h4><p>${u.d}</p><div class="ana" style="margin-top:8px">كلمات: ${u.k.map(k=>`<span class="df" tabindex="0" data-k="${k}" data-d="${esc(DEFS[k][1])}">${DEFS[k][0]}</span>`).join(' · ')}</div>`}
+$('#codebox').addEventListener('mouseover',e=>{const l=e.target.closest('.cl[data-f]');if(l)pickField(l.dataset.f)});
+$('#codebox').addEventListener('click',e=>{const l=e.target.closest('.cl[data-f]');if(l)pickField(l.dataset.f)});
+$('#usertbl').addEventListener('click',e=>{const c=e.target.closest('[data-f]');if(c)pickField(c.dataset.f)});
+pickField('id');
+
+/* 3. lifecycle */
+const TYPES=['مبنى','جسر','طريق'];
+const LDB={rows:[]};let LI=0,LPLAY=true,LTOK=0;
+const CLS_TXT='class Project(models.Model):\n  name = CharField(max_length=255)\n  project_type = ForeignKey(\n      ProjectType,\n      on_delete=PROTECT)\n  project_number = CharField(\n      unique=True,\n      editable=False)';
+const LSTEPS=[
+ {t:'① تكتب الكلاس',d:'تصف الدفتر بـPython: أي أعمدة وأي أنواع. لا يوجد جدول في القاعدة بعد.',ana:'تصمّم نموذج الدفتر على ورقة',cmd:'models.py',on:['b1'],ar:[]},
+ {t:'② makemigrations',d:'Django يقارن الكلاس بما سبق، ويكتب ملف migration يصف الفرق. القاعدة ما زالت لم تتغير.',ana:'تكتب أمر الطباعة: ما الذي سيتغير',cmd:'python manage.py makemigrations',on:['b1','b2'],ar:['a1']},
+ {t:'③ migrate',d:'ينفَّذ ملف migration على PostgreSQL، فيتكوّن الجدول بأعمدته. الجدول فارغ.',ana:'الطباعة الفعلية للدفتر',cmd:'python manage.py migrate',on:['b2','b3'],ar:['a2']},
+ {t:'④ create',d:'تحفظ كائناً جديداً فيصير سطراً في الجدول. لاحظ أن رقم المشروع يتولّد وحده (editable=False).',ana:'تكتب سطراً جديداً في الدفتر',cmd:'Project.objects.create(...)',on:['b1','b3'],ar:['a3']},
+ {t:'⑤ filter',d:'تبحث بشرط فيعود لك الـQuerySet: الأسطر المطابقة فقط.',ana:'تفتح الدفتر وتبحث عن أسطر معينة',cmd:'Project.objects.filter(...)',on:['b1','b3'],ar:['a3']}
+];
+const pad3=n=>String(n).padStart(3,'0');
+function drawL(){
+ const box=(id,x,w,t1,t2,c)=>`<g class="ldn" id="${id}"><rect x="${x}" y="30" width="${w}" height="74" rx="14" fill="#fff" stroke="${c}" stroke-width="2.5"/><text x="${x+w/2}" y="62" text-anchor="middle" font-size="15" font-weight="700" fill="${c}" style="direction:ltr">${t1}</text><text x="${x+w/2}" y="86" text-anchor="middle" font-size="12.5" fill="${C.navy}">${t2}</text></g>`;
+ const ar=(id,d,c,lab,lx,ly)=>`<path class="lar" id="${id}" d="${d}" fill="none" stroke="${c}" stroke-width="3" marker-end="url(#lm)"/><text x="${lx}" y="${ly}" text-anchor="middle" font-size="12" font-weight="700" fill="${c}" style="direction:ltr">${lab}</text>`;
+ $('#ldiag').innerHTML=`<svg viewBox="0 0 700 190"><defs><marker id="lm" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="${C.navy}"/></marker></defs>
+ ${box('b1',10,150,'models.py','كود Python',C.blue)}${box('b2',275,150,'migrations/','ملفات التغيير',C.gold)}${box('b3',540,150,'PostgreSQL','الجدول والصفوف',C.green)}
+ ${ar('a1','M164 67H271',C.navy,'makemigrations',217,56)}${ar('a2','M429 67H536',C.navy,'migrate',482,56)}${ar('a3','M85 106Q350 190 615 106',C.purple,'create() / filter()',350,168)}</svg>`}
+drawL();
+function renderL(){
+ const s=LSTEPS[LI];
+ $$('#ldiag .ldn').forEach(n=>n.classList.toggle('on',s.on.includes(n.id)));
+ $$('#ldiag .lar').forEach(n=>n.classList.toggle('on',s.ar.includes(n.id)));
+ $('#linfo').innerHTML=`<div class="st">الخطوة ${LI+1} من 5</div><h4>${s.t}</h4><p>${s.d}</p><div class="ana">🍽 ${s.ana}</div><span class="code lat">${esc(s.cmd)}</span>`;
+ $('#lprog').style.width=((LI+1)/5*100)+'%';$('#lprev').disabled=LI===0;$('#lnext').disabled=LI===4;
+ $('#pcls').textContent=LI>=0?CLS_TXT:'';
+ const mig=['0001_initial.py','0002_…','0003_…'];
+ $('#pmig').textContent=mig.map(m=>m+'   ✓').join('\n')+(LI>=1?'\n0004_project.py   '+(LI>=2?'✓ applied':'· pending'):'');
+ const hasT=LI>=2;
+ $('#pdb').innerHTML=hasT?`<table class="dt"><thead><tr><th>project_number</th><th>name</th><th>project_type_id</th></tr></thead><tbody>${LDB.rows.map(r=>`<tr><td>${r.num}</td><td>${esc(r.name)}</td><td>→ ${esc(r.type)}</td></tr>`).join('')||'<tr><td colspan="3" style="color:#9aa0c8">(فارغ)</td></tr>'}</tbody></table>`:'<div class="ph-empty">لا يوجد جدول بعد</div>';
+ $('#lplay-box').classList.toggle('off',LI<3);
+ const f=$('#pfilter').value;
+ $('#pcode').textContent=LI>=4?`qs = Project.objects.filter(\n    project_type__name="${f==='all'?'…':f}")`.replace('"…")','…)'):'';
+ if(LI>=4){const rows=f==='all'?LDB.rows:LDB.rows.filter(r=>r.type===f);$('#pcode').textContent=(f==='all'?'Project.objects.all()':`Project.objects.filter(\n    project_type__name="${f}")`)+`\n→ ${rows.length} سطر: `+rows.map(r=>r.num).join(', ')}}
+function lgo(i,anim){LI=i;renderL()}
+function lsched(){const t=++LTOK;if(!LPLAY)return;setTimeout(()=>{if(t!==LTOK||!LPLAY)return;if(LI<4){lgo(LI+1);lsched()}else{LPLAY=false;$('#lplay').textContent='▶ شغّل'}},2600)}
+$('#ptype').innerHTML=TYPES.map(t=>`<option>${t}</option>`).join('');
+$('#pfilter').innerHTML='<option value="all">الكل</option>'+TYPES.map(t=>`<option>${t}</option>`).join('');
+$('#pcreate').onclick=()=>{const n=$('#pname').value.trim()||'مشروع';LDB.rows.push({num:'IB-2026-'+pad3(LDB.rows.length+1),name:n,type:$('#ptype').value});renderL()};
+$('#pfilter').onchange=renderL;
+$('#lplay').onclick=()=>{LPLAY=!LPLAY;$('#lplay').textContent=LPLAY?'⏸ إيقاف':'▶ شغّل';if(LPLAY){if(LI>=4)lgo(0);lsched()}else LTOK++};
+$('#lnext').onclick=()=>{LPLAY=false;LTOK++;$('#lplay').textContent='▶ شغّل';if(LI<4)lgo(LI+1)};
+$('#lprev').onclick=()=>{LPLAY=false;LTOK++;$('#lplay').textContent='▶ شغّل';if(LI>0)lgo(LI-1)};
+$('#lreset').onclick=()=>{LDB.rows=[];LPLAY=true;$('#lplay').textContent='⏸ إيقاف';lgo(0);lsched()};
+renderL();
+/* autoplay when the section is first seen */
+let lstarted=false;new IntersectionObserver((es,ob)=>{if(es[0].isIntersecting&&!lstarted){lstarted=true;lsched();ob.disconnect()}},{threshold:.4}).observe($('#m3'));
+
+/* 4. FK + PROTECT */
+let FKM='protect',FKT,FKP;
+const fkReset=()=>{FKT=[{n:'مبنى'},{n:'جسر'},{n:'طريق'}];FKP=[{num:'IB-2026-001',name:'جسر الغدير',t:'جسر'},{num:'IB-2026-002',name:'برج الشرق',t:'مبنى'},{num:'IB-2026-003',name:'مبنى الإدارة',t:'مبنى'}];$('#fkres').style.setProperty('--c',C.muted);$('#fkres').style.setProperty('--s','#fff');$('#fkres').innerHTML='<div class="why">اضغط «حذف» بجانب أي نوع.</div>';drawFK()};
+$('#odmode').innerHTML=`<button class="chip on" data-m="protect">on_delete = PROTECT (الذي نستخدمه)</button><button class="chip" data-m="cascade">on_delete = CASCADE (للمقارنة)</button>`;
+$('#odmode').onclick=e=>{const b=e.target.closest('.chip');if(!b)return;FKM=b.dataset.m;$$('#odmode .chip').forEach(c=>c.classList.toggle('on',c===b));fkReset()};
+function drawFK(){
+ $('#fktypes').innerHTML=FKT.map((t,i)=>{const n=FKP.filter(p=>p.t===t.n).length;return `<div class="fkrow"><b>${t.n}</b><span class="cnt">${n} مشاريع</span><button data-i="${i}">حذف</button></div>`}).join('')||'<div class="ph-empty">لا أنواع</div>';
+ $('#fkproj').innerHTML=`<table class="dt"><thead><tr><th>project_number</th><th>name</th><th>project_type_id</th></tr></thead><tbody>${FKP.map(p=>`<tr><td>${p.num}</td><td>${esc(p.name)}</td><td>→ ${p.t}</td></tr>`).join('')||'<tr><td colspan="3" style="color:#9aa0c8">(فارغ)</td></tr>'}</tbody></table>`}
+$('#fktypes').onclick=e=>{const b=e.target.closest('button');if(!b)return;const t=FKT[+b.dataset.i],used=FKP.filter(p=>p.t===t.n),r=$('#fkres');
+ const out=(c,s,h)=>{r.style.setProperty('--c',c);r.style.setProperty('--s',s);r.innerHTML=h};
+ if(used.length&&FKM==='protect')return out(C.red,'#f9ecec',`<div class="code-big" style="font-size:22px">ProtectedError</div><div class="why">ممنوع حذف «${t.n}»: ${used.length} مشاريع تشير إليه. لا يتغير شيء في البيانات.</div>`);
+ if(used.length&&FKM==='cascade'){FKP=FKP.filter(p=>p.t!==t.n);FKT.splice(+b.dataset.i,1);drawFK();return out(C.gold,'#fdf3e6',`<div class="code-big" style="font-size:22px">CASCADE</div><div class="why">حُذف «${t.n}» وحُذفت معه ${used.length} مشاريع! (لهذا اخترنا PROTECT.)</div>`)}
+ FKT.splice(+b.dataset.i,1);drawFK();out(C.green,'#ecf5ed',`<div class="code-big" style="font-size:22px">OK</div><div class="why">حُذف «${t.n}» لأنه لا يشير إليه أحد.</div>`)};
+fkReset();
+/* rule 1 */
+const rn=(on)=>{$('#r1a').className='card r1 '+(on?'bad':'ok');$('#r1b').className='card r1 ok';$('#r1at').textContent=on?'لم يعد يعمل: الاسم صار «التصميم المبدئي».':'يعمل الآن، لكنه هش.';$('#r1bt').textContent='يعمل دائماً: المفتاح 2 لا يتغير.'};
+$('#rn').onclick=()=>rn(true);$('#rnr').onclick=()=>rn(false);rn(false);
+
+/* 5. quiz */
+const MQ=[
+ {q:'ما الذي يقابل «السطر» في Excel داخل Django؟',o:['الـModel','كائن (Object) واحد','الـmigration'],a:1,e:'الجدول = Model، والعمود = Field، والسطر = كائن واحد.'},
+ {q:'ما الفرق بين makemigrations وmigrate؟',o:['الأول يكتب ملف التغيير، والثاني ينفّذه على القاعدة','هما أمر واحد','الأول يحذف والثاني يضيف'],a:0,e:'makemigrations يكتب فقط. القاعدة لا تتغير إلا عند migrate.'},
+ {q:'لماذا الحالة والمرحلة في Project روابط (ForeignKey) وليست نصوصاً؟',o:['لأن النص أبطأ','لأن الاسم قد يُعدَّل، والمنطق يجب ألا ينكسر (RULE #1)','لأن Django لا يدعم النصوص'],a:1,e:'نربط المنطق بمفتاح ثابت (enum_key) لا بنص يمكن تعديله.'},
+ {q:'ماذا يفعل on_delete=PROTECT عند حذف نوع مشروع تستخدمه مشاريع؟',o:['يحذف المشاريع معه','يمنع الحذف ويرفع ProtectedError','يتجاهل الأمر'],a:1,e:'PROTECT يمنع الحذف ما دام هناك من يشير إلى السطر.'},
+ {q:'من يكتب قيمة project_number؟',o:['المستخدم من الشاشة','النظام تلقائياً بصيغة IB-YYYY-NNN','لا أحد'],a:1,e:'الحقل editable=False والرقم يولَّد تلقائياً (projects/models.py).'}
+];
+let msc=0,mans=0;
+$('#mquiz').innerHTML=MQ.map((q,i)=>`<div class="card q" id="mq${i}"><h4>${i+1}. ${q.q}</h4>${q.o.map((o,j)=>`<button class="opt" data-q="${i}" data-j="${j}">${o}</button>`).join('')}<div class="ex">${q.e}</div></div>`).join('');
+$('#mquiz').onclick=e=>{const b=e.target.closest('.opt');if(!b||b.disabled)return;const i=+b.dataset.q,j=+b.dataset.j;
+ $$('#mq'+i+' .opt').forEach((x,k)=>{x.disabled=true;if(k===MQ[i].a)x.classList.add('right')});
+ if(j===MQ[i].a)msc++;else b.classList.add('wrong');$('#mq'+i).classList.add('done');mans++;
+ if(mans===MQ.length)$('#mscore').textContent='نتيجتك: '+msc+' من '+MQ.length+(msc===MQ.length?' — ممتاز! 🎉':' — راجع الأقسام أعلاه وأعد المحاولة')};
+
+/* 6. simple words */
+function mgl(q){q=(q||'').trim().toLowerCase();$('#mgl').innerHTML=Object.values(DEFS).filter(d=>!q||(d[0]+d[1]).toLowerCase().includes(q)).map(d=>`<div class="gi"><b>${esc(d[0])}</b><p>${d[1]}</p></div>`).join('')||'<p style="color:var(--muted)">لا نتائج</p>'}
+mgl();$('#mgsearch').oninput=e=>mgl(e.target.value);
 </script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-# IBCC login-flow preview
+# IBCC study guide (interactive)
 
-Interactive study page (Arabic, RTL). Open `index.html` or the GitHub Pages URL.
-Simulation only; demo account and tokens are fake.
+Arabic, RTL. Term pages: Form, Model (View and Template coming).
+Simulation only; demo account, tokens and rows are fake.
