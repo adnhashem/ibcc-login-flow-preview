@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@500;700&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
-  --navy:#101540; --blue:#1E2C87; --gold:#DE7A0F; --purple:#A118A0; --green:#1C8B23; --red:#b23b3b;
+  --navy:#101540; --blue:#1E2C87; --gold:#A85600; --purple:#A118A0; --green:#1C8B23; --red:#b23b3b;
   --muted:#5b6080; --bg:#ffffff; --panel:#f8f9fd; --line:#10154022;
   --soft-b:#eef1fb; --soft-g:#fdf3e6; --soft-gr:#ecf5ed; --soft-r:#f9ecec; --soft-p:#f6e9f6;
   --r:16px; --shadow:0 10px 30px -12px rgba(16,21,64,.25);
@@ -43,7 +43,7 @@ nav a:hover,nav a.on{background:var(--soft-b);color:var(--blue)}
 .hero h1{font-family:var(--disp);font-size:clamp(34px,6vw,60px);line-height:1.15;margin:12px 0 14px}
 .hero h1 span{color:var(--gold)}
 .hero p{max-width:640px;color:var(--muted);font-size:18px}
-.cta{display:inline-flex;gap:10px;align-items:center;margin-top:26px;padding:14px 26px;border-radius:14px;background:var(--gold);color:#fff;font-weight:700;font-size:17px;text-decoration:none;box-shadow:0 12px 24px -10px var(--gold);transition:.2s}
+.cta{display:inline-flex;gap:10px;align-items:center;margin-top:26px;padding:14px 26px;border-radius:14px;background:var(--gold);color:#fff;font-weight:700;font-size:17px;text-decoration:none;box-shadow:0 10px 22px -12px rgba(16,21,64,.45);transition:.2s}
 .cta:hover{transform:translateY(-2px)}
 .hero-flow{display:flex;align-items:center;gap:10px;margin-top:38px;flex-wrap:wrap}
 .hf{padding:10px 18px;border-radius:12px;font-weight:700;color:#fff;font-size:15px;animation:pop 3.2s infinite}
@@ -165,7 +165,7 @@ input[type=range]{width:100%;accent-color:var(--gold)}
 .bars .bar i{position:absolute;inset-block:0;inset-inline-start:0;display:block;transition:width .2s}
 .bars .bar span{position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;padding:0 12px;font-size:13px;font-weight:700}
 .nd{transition:.3s}
-.nd.on rect,.nd.on polygon{stroke-width:4;filter:drop-shadow(0 0 6px currentColor)}
+.nd.on rect,.nd.on polygon{stroke-width:4;filter:drop-shadow(0 2px 4px rgba(16,21,64,.28))}
 .nd.dim{opacity:.28}
 .ln.dim{opacity:.18}
 .ln.on{stroke-width:3.5}
@@ -227,11 +227,21 @@ table.dt tr:last-child td{border-bottom:none}
 @media(max-width:600px){.trio{grid-template-columns:1fr}}
 #ldiag{padding:10px}
 .ldn{transition:.3s}
-.ldn.on rect{stroke-width:4;filter:drop-shadow(0 0 6px var(--gold))}
+.ldn.on rect{stroke-width:4;filter:drop-shadow(0 2px 4px rgba(16,21,64,.28))}
 .lar{transition:.3s;opacity:.25}
 .lar.on{opacity:1;stroke-width:4}
 #lplay-box.off{opacity:.45;pointer-events:none}
 #pcls,#pmig{white-space:pre;overflow-x:auto;max-height:none}
+.pipe{display:flex;align-items:stretch;gap:6px;flex-wrap:wrap;margin:14px 0}
+.pn{flex:1 1 130px;min-width:130px;background:#fff;border:2px solid var(--line);border-radius:14px;padding:10px 12px;text-align:center;opacity:.4;transition:.35s;transform:scale(.97)}
+.pn.lit{opacity:1;transform:scale(1);border-color:var(--c);box-shadow:var(--shadow)}
+.pn.skip{opacity:.2;filter:grayscale(1)}
+.pn.err{border-color:var(--red);background:var(--soft-r)}
+.pn small{display:block;color:var(--muted);font-size:12px;font-weight:700}
+.pn b{display:block;font-size:13px;margin-top:4px;word-break:break-word;font-weight:500;line-height:1.55}
+.pa{align-self:center;color:var(--muted);font-size:20px}
+.stat{display:inline-block;padding:3px 12px;border-radius:99px;color:#fff;font-weight:800;font-family:var(--mono);direction:ltr;font-size:13px}
+.stat.s2{background:var(--green)}.stat.s4{background:var(--red)}
 .ph-empty{padding:18px;text-align:center;color:var(--muted);font-size:13.5px;border:2px dashed var(--line);border-radius:12px}
 .fkgrid{display:grid;grid-template-columns:1fr 1.4fr;gap:16px}
 @media(max-width:760px){.fkgrid{grid-template-columns:1fr}}
@@ -259,7 +269,7 @@ footer{padding:34px 0;border-top:1px solid var(--line);color:var(--muted);font-s
     <div class="terms" id="terms">
       <a class="tbtn" data-p="form" href="#form">1 Form <span class="ck">✔</span></a>
       <a class="tbtn" data-p="model" href="#model">2 Model <span class="ck">✔</span></a>
-      <span class="tbtn dis" title="نشرحه بعد Model">3 View <em>قريباً</em></span>
+      <a class="tbtn" data-p="view" href="#view">3 View <span class="ck">✔</span></a>
       <span class="tbtn dis" title="نشرحه بعد View">4 Template <em>قريباً</em></span>
     </div>
   </div>
@@ -466,13 +476,81 @@ footer{padding:34px 0;border-top:1px solid var(--line);color:var(--muted);font-s
 </div></section>
 </main>
 
+<!-- ═════════════ VIEW PAGE ═════════════ -->
+<main class="page" id="page-view" hidden>
+<div class="hero"><div class="wrap">
+  <div class="eyebrow">IBCC · Study Guide · Term 03 · View</div>
+  <h1>View: <span>مسؤول الطلب</span><br>في الخادم</h1>
+  <p>الـ<span class="df" data-k="view">View</span> هو الذي يصل إليه كل طلب: يسأل عن الصلاحية، يستعين بالـSerializer والـModel، ثم يرد. الكلمات المنقّطة لها تعريف بسيط.</p>
+  <a class="cta" href="#v2">▶ ابدأ</a>
+  <div class="hero-flow" aria-hidden="true">
+    <div class="hf">URL</div><div class="ha">←</div>
+    <div class="hf">View</div><div class="ha">←</div>
+    <div class="hf">Serializer</div><div class="ha">←</div>
+    <div class="hf">Model</div>
+  </div>
+</div></div>
+
+<section class="blk" id="v1"><div class="wrap">
+  <div class="sh"><span class="n">01</span><h2>الصورة الكبيرة: مسؤول الطاولة</h2></div>
+  <p class="sub">يستلم الطلب، يتأكد أنك تملك حق الطلب، يعطي الورقة للفحص، يكلّم المطبخ، ويرجع لك الجواب. اضغط البطاقة لترى ما يقابلها في الكود.</p>
+  <div class="cards" id="vcards"></div>
+</div></section>
+
+<section class="blk" id="v2"><div class="wrap">
+  <div class="sh"><span class="n">02</span><h2>من يستلم الطلب؟ (العنوان ← الـView)</h2></div>
+  <p class="sub">اختر طلباً، وشاهد مساره داخل <code>ProjectViewSet</code> و<code>LoginView</code> و<code>LogoutView</code>. المحتوى مقروء من الكود (المصدر أسفل كل طلب).</p>
+  <div class="chips" id="rqchips" style="margin-bottom:6px"></div>
+  <div class="pipe" id="rqpipe"></div>
+  <div class="card info" id="rqinfo"></div>
+</div></section>
+
+<section class="blk" id="v3"><div class="wrap">
+  <div class="sh"><span class="n">03</span><h2>داخل الـView: ماذا يحدث في <span class="lat">create</span>؟</h2></div>
+  <p class="sub">إنشاء مشروع (<code>POST /api/v1/projects/</code>) خطوة بخطوة. اختر ما يحدث: ينجح، أو لا تملك الصلاحية، أو البيانات ناقصة.</p>
+  <div class="chips" id="vscen" style="margin-bottom:14px"></div>
+  <div class="mdual">
+    <div class="col">
+      <div class="codebox" id="vcode" dir="ltr"></div>
+      <div class="card"><div class="ctrls"><button class="btn p" id="vplay">⏸ إيقاف</button><button class="btn" id="vprev">⏮</button><button class="btn" id="vnext">⏭ التالي</button><button class="btn" id="vreset">↺ إعادة</button></div><div class="prog"><i id="vprog"></i></div></div>
+    </div>
+    <div class="col">
+      <div class="card info" id="vinfo"></div>
+      <div class="card"><h3>الرد النهائي</h3><div id="vstat" class="verdict" style="min-height:90px"></div></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="blk" id="v4"><div class="wrap">
+  <div class="sh"><span class="n">04</span><h2>أنواع الـViews: من اليدوي إلى شبه التلقائي</h2></div>
+  <p class="sub">اختر مستوى. كلما صعدت قلّ ما تكتبه بيدك. في المشروع 103 كلاس من هذا النوع في ملفات <code>views.py</code> (حسب عدّي بالبحث في الكود). الأكواد المعروضة مقتطفات مختصرة من الأصل.</p>
+  <div class="chips" id="vlad" style="margin-bottom:14px"></div>
+  <div class="mdual">
+    <div class="codebox" id="vladcode" dir="ltr"></div>
+    <div class="col"><div class="card info" id="vladinfo"></div><div class="tblwrap" id="vladtbl"></div></div>
+  </div>
+</div></section>
+
+<section class="blk" id="v5"><div class="wrap">
+  <div class="sh"><span class="n">05</span><h2>اختبر نفسك</h2></div>
+  <div class="qz" id="vquiz"></div>
+  <div class="score" id="vscore"></div>
+</div></section>
+
+<section class="blk" id="v6"><div class="wrap">
+  <div class="sh"><span class="n">06</span><h2>كلمات بسيطة</h2></div>
+  <input class="gs" id="vgsearch" placeholder="ابحث عن كلمة…" aria-label="بحث">
+  <div class="gl" id="vgl"></div>
+</div></section>
+</main>
+
 <div id="tip" role="tooltip"></div>
 
 <footer><div class="wrap">محتوى تعليمي مأخوذ من كود IBCC بتاريخ 2026-11-13 · المحاكاة تعمل في المتصفح فقط · الحساب والتوكنات المعروضة وهمية</div></footer>
 
 <script>
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
-const C={navy:'#101540',blue:'#1E2C87',gold:'#DE7A0F',purple:'#A118A0',green:'#1C8B23',red:'#b23b3b',muted:'#5b6080'};
+const C={navy:'#101540',blue:'#1E2C87',gold:'#A85600',purple:'#A118A0',green:'#1C8B23',red:'#b23b3b',muted:'#5b6080'};
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
 /* ───── 1. restaurant cards ───── */
@@ -790,7 +868,8 @@ addEventListener('scroll',()=>tip.style.display='none',{passive:true});
 
 const NAVS={
  form:[['s1','المطعم'],['s2','المحاكي'],['s3','الـSerializer'],['s4','التوكن'],['s5','اختبار'],['s6','المسرد']],
- model:[['m1','الدفتر'],['m2','الكود والجدول'],['m3','دورة الحياة'],['m4','الروابط والحماية'],['m5','اختبار'],['m6','كلمات بسيطة']]
+ model:[['m1','الدفتر'],['m2','الكود والجدول'],['m3','دورة الحياة'],['m4','الروابط والحماية'],['m5','اختبار'],['m6','كلمات بسيطة']],
+ view:[['v1','مسؤول الطاولة'],['v2','العنوان ← View'],['v3','داخل create'],['v4','أنواع الـViews'],['v5','اختبار'],['v6','كلمات بسيطة']]
 };
 let PAGE='form';
 function showPage(p){if(!NAVS[p])p='form';PAGE=p;
@@ -925,8 +1004,172 @@ $('#mquiz').onclick=e=>{const b=e.target.closest('.opt');if(!b||b.disabled)retur
  if(mans===MQ.length)$('#mscore').textContent='نتيجتك: '+msc+' من '+MQ.length+(msc===MQ.length?' — ممتاز! 🎉':' — راجع الأقسام أعلاه وأعد المحاولة')};
 
 /* 6. simple words */
-function mgl(q){q=(q||'').trim().toLowerCase();$('#mgl').innerHTML=Object.values(DEFS).filter(d=>!q||(d[0]+d[1]).toLowerCase().includes(q)).map(d=>`<div class="gi"><b>${esc(d[0])}</b><p>${d[1]}</p></div>`).join('')||'<p style="color:var(--muted)">لا نتائج</p>'}
+const MKEYS=Object.keys(DEFS);
+function mgl(q){q=(q||'').trim().toLowerCase();$('#mgl').innerHTML=MKEYS.map(k=>DEFS[k]).filter(d=>!q||(d[0]+d[1]).toLowerCase().includes(q)).map(d=>`<div class="gi"><b>${esc(d[0])}</b><p>${d[1]}</p></div>`).join('')||'<p style="color:var(--muted)">لا نتائج</p>'}
 mgl();$('#mgsearch').oninput=e=>mgl(e.target.value);
+</script>
+<script>
+/* ═════════ VIEW PAGE ═════════ */
+const VDEFS={
+ view:['View','الكلاس أو الدالة التي يصل إليها الطلب. تقرر ماذا يحدث له، وترجع الرد.'],
+ request:['Request','الطلب القادم من المتصفح: العنوان ونوعه والبيانات والمستخدم.'],
+ response:['Response','الرد الراجع للمتصفح: بيانات + رقم الحالة (200، 400…).'],
+ url:['URL / route','العنوان الذي يُرسل إليه الطلب، مثل /api/v1/projects/. ملف urls يربط كل عنوان بـView.'],
+ router:['Router','أداة تولّد عناوين الـViewSet تلقائياً (القائمة، التفاصيل…).'],
+ endpoint:['endpoint','عنوان محدد في الـAPI يقبل نوعاً محدداً من الطلبات.'],
+ verb:['HTTP verb','نوع الطلب: GET يقرأ، POST ينشئ، PATCH يعدّل جزءاً، DELETE يحذف.'],
+ status:['status code','رقم يلخّص النتيجة: 2xx نجاح، 4xx خطأ من المرسل، 5xx خطأ من الخادم.'],
+ s401:['401','غير معروف: لم تسجّل دخولك أو بطاقتك منتهية.'],
+ s403:['403','معروف لكن ممنوع: أنت مسجّل لكن لا تملك الصلاحية.'],
+ s404:['404','غير موجود. وعندنا يُرجَع أيضاً لمن لا يحق له رؤية المشروع، حتى لا نكشف وجوده.'],
+ s405:['405','Method Not Allowed: هذا العنوان لا يقبل هذا النوع من الطلبات.'],
+ permission:['permission class','فاحص صلاحيات يُسأل قبل تنفيذ الـView: هل يحق لهذا المستخدم؟'],
+ viewset:['ViewSet','كلاس واحد يجمع عمليات متعددة (قائمة، إنشاء، تفاصيل، تعديل، حذف) لنفس المورد.'],
+ apiview:['APIView','كلاس View أساسي في DRF: تكتب فيه get() أو post() بنفسك.'],
+ action:['@action','عملية إضافية داخل ViewSet لها عنوانها الخاص، مثل change_phase.'],
+ get_queryset:['get_queryset','الدالة التي تحدد أي أسطر يحق لهذا المستخدم أن يراها.'],
+ is_valid:['is_valid()','تشغّل فحص الـSerializer. مع raise_exception=True يتوقف الطلب بـ400 عند أول خطأ.'],
+ save:['save()','يحفظ الكائن المفحوص في القاعدة: يصير سطراً في الجدول.']
+};
+const VKEYS=Object.keys(VDEFS);Object.assign(DEFS,VDEFS);
+$$('#page-view .df[data-k]').forEach(e=>{const d=DEFS[e.dataset.k];if(d){e.dataset.d=d[1];e.tabIndex=0}});
+const dfv=k=>`<span class="df" tabindex="0" data-k="${k}" data-d="${esc(DEFS[k][1])}">${DEFS[k][0]}</span>`;
+
+/* 1. cards */
+const VC=[
+ {ar:'العنوان',emoji:'🧭',lat:'URL',c:C.blue,s:'#eef1fb',d:'يحدد أي View يستلم',code:'config/urls.py:49'},
+ {ar:'الـView',emoji:'🛎',lat:'View',c:C.gold,s:'#fdf3e6',d:'يدير الطلب من أوله لآخره',code:'projects/views.py:128'},
+ {ar:'الصلاحية',emoji:'🛂',lat:'permission',c:C.red,s:'#f9ecec',d:'هل يحق لك؟',code:'get_permissions()'},
+ {ar:'الورقة',emoji:'📋',lat:'Serializer',c:C.purple,s:'#f6e9f6',d:'يفحص البيانات',code:'get_serializer_class()'},
+ {ar:'الدفتر',emoji:'📒',lat:'Model',c:C.green,s:'#ecf5ed',d:'يحفظ ويقرأ',code:'serializer.save()'},
+ {ar:'الرد',emoji:'📤',lat:'Response',c:C.navy,s:'#eef1fb',d:'نتيجة + رقم حالة',code:'Response(data, status=201)'}
+];
+$('#vcards').innerHTML=VC.map(k=>`<div class="flip" tabindex="0" style="--c:${k.c};--s:${k.s}"><div class="flip-in"><div class="face"><div class="emoji">${k.emoji}</div><div class="big">${k.ar}</div><small>${k.d}</small><span class="hint">اضغط للقلب ↻</span></div><div class="face back"><div class="big">${k.lat}</div><code>${k.code}</code></div></div></div>`).join('');
+$$('#vcards .flip').forEach(f=>{const t=()=>f.classList.toggle('on');f.onclick=t;f.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();t()}}});
+
+/* 2. url -> view explorer */
+const RQ=[
+ {l:'GET /projects/',u:'/api/v1/projects/',vb:'GET',vw:'ProjectViewSet',m:'list',ser:'ProjectListSerializer',perm:'مسجّل الدخول. get_queryset يحدد ما تراه: مشاريعك، أو الكل لمن يملك projects.view_all',md:'Project (قراءة)',res:'200 قائمة',ok:true,note:'لا صلاحية خاصة للقائمة؛ التقييد يتم في get_queryset لا في فحص الصلاحية.',src:'projects/views.py:142 · 251 · 316 · 399'},
+ {l:'POST /projects/',u:'/api/v1/projects/',vb:'POST',vw:'ProjectViewSet',m:'create',ser:'ProjectCreateSerializer',perm:'صلاحية النظام projects.create',md:'Project (إنشاء)',res:'201 + تفاصيل',ok:true,note:'الإنشاء لا يُقيَّد بعضوية مشروع، لأن المشروع غير موجود بعد.',src:'projects/views.py:418'},
+ {l:'GET /projects/{id}/',u:'/api/v1/projects/{id}/',vb:'GET',vw:'ProjectViewSet',m:'retrieve (موروث)',ser:'ProjectDetailSerializer',perm:'project.view',md:'Project (قراءة)',res:'200 تفاصيل',ok:true,note:'من لا يحق له يحصل على 404 وليس 403، حتى لا نكشف وجود المشروع.',src:'projects/views.py:146 (تعليق ibcc_inherited_permissions)'},
+ {l:'PATCH /projects/{id}/',u:'/api/v1/projects/{id}/',vb:'PATCH',vw:'ProjectViewSet',m:'partial_update',ser:'ProjectUpdateSerializer',perm:'project.update (عضو في المشروع)',md:'Project (تعديل)',res:'200 + تفاصيل',ok:true,note:'تعديل جزئي: ترسل الحقول المتغيرة فقط.',src:'projects/views.py:433'},
+ {l:'PUT /projects/{id}/',u:'/api/v1/projects/{id}/',vb:'PUT',vw:'ProjectViewSet',m:'—',ser:'—',perm:'—',md:'—',res:'405',ok:false,note:'عطّلنا PUT عمداً: http_method_names لا يسمح إلا بـget وpost وpatch وdelete. الطلب لا يصل أصلاً إلى أي دالة.',src:'projects/views.py:157'},
+ {l:'DELETE /projects/{id}/',u:'/api/v1/projects/{id}/',vb:'DELETE',vw:'ProjectViewSet',m:'destroy',ser:'—',perm:'project.delete (عضو في المشروع)',md:'Project (حذف قابل للاسترجاع)',res:'سيأتي في الدرس 10',ok:true,note:'الحذف عندنا «ناعم»: يُخفى ويمكن استرجاعه (الدرس 10).',src:'projects/views.py:504'},
+ {l:'POST /projects/{id}/change_phase/',u:'/api/v1/projects/{id}/change_phase/',vb:'POST',vw:'ProjectViewSet',m:'change_phase (@action)',ser:'ProjectChangePhaseSerializer',perm:'project.change_phase (حسب تعليق الدالة)',md:'Project + سجل التغيير',res:'200 + تفاصيل',ok:true,note:'مرحلة جديدة: تتغير ويُكتب سطر في السجل. المرحلة نفسها: لا تغيير ولا سطر.',src:'projects/views.py:916'},
+ {l:'POST /auth/login/',u:'/api/v1/auth/login/',vb:'POST',vw:'LoginView (TokenObtainPairView)',m:'post (من المكتبة)',ser:'CustomTokenObtainPairSerializer',perm:'AllowAny: مفتوح للزائر',md:'User (بحث)',res:'200 access + refresh + user',ok:true,note:'هذا مسار الدخول الذي شاهدته في صفحة Form. الكلاس نفسه ثلاثة أسطر فقط.',src:'accounts/views.py:29'},
+ {l:'POST /auth/logout/',u:'/api/v1/auth/logout/',vb:'POST',vw:'LogoutView (APIView)',m:'post',ser:'لا يوجد: يقرأ request.data.get("refresh") يدوياً',perm:'مسجّل الدخول + RejectDeviceToken',md:'قائمة التوكنات المحظورة',res:'205 (أو 400 إن كان التوكن ناقصاً أو غير صالح)',ok:true,note:'APIView: كتبنا post() بأيدينا. الخطأ يرجع 400 إن غاب refresh.',src:'accounts/views.py:~36'}
+];
+let RQTOK=0;
+$('#rqchips').innerHTML=RQ.map((r,i)=>`<button class="chip ${r.vb==='PUT'?'bad':''}" data-i="${i}" style="direction:ltr">${r.l}</button>`).join('');
+function showRQ(i){
+ const r=RQ[i];$$('#rqchips .chip').forEach((c,k)=>c.classList.toggle('on',k===i));
+ const nodes=[
+  ['العنوان',`<span style="direction:ltr;display:inline-block">${r.vb} ${r.u}</span>`,C.blue],
+  ['الـView',`${r.vw}${r.m!=='—'?'<br>'+r.m:''}`,C.gold],
+  ['الصلاحية',r.perm,C.red],
+  ['الـSerializer',r.ser,C.purple],
+  ['الـModel',r.md,C.green],
+  ['الرد',`<span class="stat ${r.ok?'s2':'s4'}">${r.res}</span>`,C.navy]
+ ];
+ $('#rqpipe').innerHTML=nodes.map((n,k)=>`<div class="pn" id="pn${k}" style="--c:${n[2]}"><small>${n[0]}</small><b>${n[1]}</b></div>${k<5?'<div class="pa">←</div>':''}`).join('');
+ const t=++RQTOK;
+ const lit=(k)=>{const e=$('#pn'+k);if(e)e.classList.add('lit')};
+ const seq=r.ok?[0,1,2,3,4,5]:[0,1];
+ seq.forEach((k,j)=>setTimeout(()=>{if(t===RQTOK)lit(k)},250*j));
+ if(!r.ok){[2,3,4].forEach(k=>$('#pn'+k).classList.add('skip'));setTimeout(()=>{if(t===RQTOK){const e=$('#pn5');e.classList.add('lit','err')}},500)}
+ $('#rqinfo').innerHTML=`<div class="st">${esc(r.l)}</div><h4>${r.ok?'هكذا يمرّ الطلب':'الطلب يُرفض عند الباب'}</h4><p>${r.note}</p><span class="code lat">${esc(r.src)}</span>`;
+}
+$('#rqchips').onclick=e=>{const b=e.target.closest('.chip');if(b)showRQ(+b.dataset.i)};
+showRQ(1);
+
+/* 3. inside create */
+const VCODE=[
+ ['def get_permissions(self):  # قبل أن تبدأ create','perm'],
+ ['    return HasSystemPrivilege("projects.create")','perm'],
+ ['',''],
+ ['def create(self, request, *args, **kwargs):','c'],
+ ['    serializer = self.get_serializer(data=request.data)','s1'],
+ ['    serializer.is_valid(raise_exception=True)','s2'],
+ ['    project = serializer.save()','s3'],
+ ['    project = self._get_annotated_project(project.pk)','s4'],
+ ['    detail = ProjectDetailSerializer(project, context={"request": request})','s4'],
+ ['    return Response(detail.data, status=status.HTTP_201_CREATED)','s5']
+];
+const VST=[
+ {k:'perm',t:'فحص الصلاحية',d:'قبل أي شيء، get_permissions() يُرجع فاحصاً: هل يملك هذا المستخدم صلاحية النظام projects.create؟ (مبسّط هنا: الفحص الفعلي أطول، لكن هذا جوهره.)',ana:'مسؤول الطاولة يسأل: هل معك حق الطلب؟',code:'projects/views.py:160'},
+ {k:'s1',t:'اختيار الـSerializer وتسليمه البيانات',d:'get_serializer_class() يرى أن العملية create فيختار ProjectCreateSerializer، ونسلّمه ما أرسله المستخدم (request.data).',ana:'يسلّم الورقة التي كتبها الزبون لموظف الفحص',code:'projects/views.py:399-404 · 419'},
+ {k:'s2',t:'الفحص: is_valid',d:'الـSerializer يفحص الحقول. مع raise_exception=True يتوقف الطلب هنا بـ400 عند أول خطأ ولا يصل شيء إلى القاعدة.',ana:'موظف الفحص يرفض الورقة الناقصة',code:'projects/views.py:420'},
+ {k:'s3',t:'الحفظ: save',d:'البيانات سليمة، فيُنشأ سطر جديد في جدول Project، ويُولَّد رقم المشروع IB-YYYY-NNN تلقائياً.',ana:'المطبخ يسجّل الطلب في الدفتر',code:'projects/views.py:421'},
+ {k:'s4',t:'إعادة قراءة المشروع وتجهيز الرد',d:'نعيد قراءة المشروع بكل بياناته ونحوّله بـProjectDetailSerializer ليصير جاهزاً للإرسال (JSON).',ana:'يرتّب الجواب في صحن واحد',code:'projects/views.py:423-424'},
+ {k:'s5',t:'الرد',d:'يرجع الـView ردّاً بالتفاصيل ورقم الحالة 201 (Created).',ana:'يحمل الجواب للزبون',code:'projects/views.py:426'}
+];
+const VSCEN=[
+ {id:'ok',t:'ينجح',cls:'ok'},{id:'forbid',t:'بلا صلاحية',cls:'bad'},{id:'bad',t:'اسم المشروع ناقص',cls:'bad'}
+];
+let VS='ok',VI=0,VPLAY=true,VTOK=0;
+$('#vscen').innerHTML=VSCEN.map(s=>`<button class="chip ${s.cls}" data-id="${s.id}">${s.t}</button>`).join('');
+$('#vcode').innerHTML=VCODE.map((l,i)=>`<div class="cl" data-k="${l[1]}">${esc(l[0])||'&nbsp;'}</div>`).join('');
+function vlimit(){return VS==='forbid'?0:(VS==='bad'?2:5)}
+function vrender(){
+ const st=VST[VI];
+ $$('#vcode .cl').forEach(l=>l.classList.toggle('on',l.dataset.k===st.k||(st.k==='perm'&&l.dataset.k==='perm')));
+ let h=`<div class="st">الخطوة ${VI+1}</div><h4>${st.t}</h4><p>${st.d}</p><div class="ana">🍽 ${st.ana}</div><span class="code lat">${esc(st.code)}</span>`;
+ let fail=null;
+ if(VS==='forbid'&&VI===0){fail=['403',C.red,'#f9ecec','{"detail":"You do not have permission to perform this action."}','مستخدم مسجّل لكن بلا projects.create: يتوقف عند أول خطوة، ولا يبدأ create أصلاً.']}
+ if(VS==='bad'&&VI===2){fail=['400',C.gold,'#fdf3e6','{"name":["This field is required."]}','مثال: أُرسل الطلب بلا name. توقف الطلب عند is_valid ولم تُنشأ أي صفوف.']}
+ if(VS==='ok'&&VI===5){fail=['201',C.green,'#ecf5ed','{ "project_number": "IB-2026-001", "name": "…", … }','نجح الطلب: المشروع صار سطراً في القاعدة ووصل التفاصيل للمستخدم.']}
+ $('#vinfo').innerHTML=h;
+ const v=$('#vstat');
+ if(fail){v.style.setProperty('--c',fail[1]);v.style.setProperty('--s',fail[2]);v.innerHTML=`<div class="code-big" style="font-size:28px">${fail[0]}</div><pre>${esc(fail[3])}</pre><div class="why">${fail[4]}</div>`}
+ else{v.style.setProperty('--c','var(--line)');v.style.setProperty('--s','#fff');v.innerHTML='<div class="why" style="color:var(--muted)">لم يصل الطلب إلى الرد بعد…</div>'}
+ $('#vprog').style.width=((VI+1)/(vlimit()+1)*100)+'%';
+ $('#vprev').disabled=VI===0;$('#vnext').disabled=VI>=vlimit();
+}
+function vgo(i){VI=i;vrender()}
+function vsched(){const t=++VTOK;if(!VPLAY)return;setTimeout(()=>{if(t!==VTOK||!VPLAY)return;if(VI<vlimit()){vgo(VI+1);vsched()}else{VPLAY=false;$('#vplay').textContent='▶ شغّل'}},2400)}
+function vpick(id){VS=id;$$('#vscen .chip').forEach(c=>c.classList.toggle('on',c.dataset.id===id));VPLAY=true;$('#vplay').textContent='⏸ إيقاف';vgo(0);vsched()}
+$('#vscen').onclick=e=>{const b=e.target.closest('.chip');if(b)vpick(b.dataset.id)};
+$('#vplay').onclick=()=>{VPLAY=!VPLAY;$('#vplay').textContent=VPLAY?'⏸ إيقاف':'▶ شغّل';if(VPLAY){if(VI>=vlimit())vgo(0);vsched()}else VTOK++};
+$('#vnext').onclick=()=>{VPLAY=false;VTOK++;$('#vplay').textContent='▶ شغّل';if(VI<vlimit())vgo(VI+1)};
+$('#vprev').onclick=()=>{VPLAY=false;VTOK++;$('#vplay').textContent='▶ شغّل';if(VI>0)vgo(VI-1)};
+$('#vreset').onclick=()=>vpick(VS);
+let vstarted=false;new IntersectionObserver((es,ob)=>{if(es[0].isIntersecting&&!vstarted){vstarted=true;vpick('ok');ob.disconnect()}},{threshold:.35}).observe($('#v3'));
+vpick('ok');VPLAY=false;VTOK++;$('#vplay').textContent='▶ شغّل';
+
+/* 4. view families */
+const VL=[
+ {n:'Django View',k:'oauth',code:'class OAuthLoginView(View):\n    def get(self, request):\n        ...\n        return self._render(request)\n\n    def post(self, request):\n        email = request.POST.get("email")\n        ...\n        return redirect(nxt or "/o/authorize/")',d:'أقدم وأبسط نوع: تكتب get() وpost() بنفسك وتقرأ request.POST بيدك، والرد صفحة HTML (render) أو redirect. نستخدمه مرة واحدة: صفحة دخول OAuth، لأنها تحتاج جلسة Django.',src:'apps/oauth/views.py:394',get:'لا شيء تقريباً',write:'كل شيء بيدك'},
+ {n:'APIView',k:'logout',code:'class LogoutView(APIView):\n    permission_classes = [IsAuthenticated, RejectDeviceToken]\n\n    def post(self, request):\n        refresh_token = request.data.get("refresh")\n        if not refresh_token:\n            return Response({"detail": "Refresh token is required."}, status=400)\n        ...\n        return Response(status=205)',d:'يعطيك DRF: قراءة JSON، والصلاحيات، وشكل الرد. وأنت تكتب post() بنفسك. مناسب لعملية واحدة بمنطق خاص.',src:'accounts/views.py:~36',get:'JSON وصلاحيات وردود',write:'الدالة نفسها'},
+ {n:'Generic view',k:'login',code:'class LoginView(TokenObtainPairView):\n    permission_classes = [AllowAny]\n    serializer_class = CustomTokenObtainPairSerializer',d:'ثلاثة أسطر فقط: المكتبة (SimpleJWT) كتبت منطق post() كله، ونحن نحدد من يدخل (AllowAny) وأي Serializer يُستعمل.',src:'accounts/views.py:29',get:'منطق post() كاملاً',write:'اختيار الصلاحية والـSerializer'},
+ {n:'ModelViewSet',k:'proj',code:'class ProjectViewSet(ModelViewSet):\n    permission_classes = [IsAuthenticated]\n    http_method_names = ["get","post","patch","delete","head","options"]\n\n    def get_queryset(self): ...\n    def get_serializer_class(self): ...\n\n    @action(detail=True, methods=["post"], url_path="change_phase")\n    def change_phase(self, request, pk=None): ...',d:'كلاس واحد يعطيك خمس عمليات جاهزة لنفس المورد، وتعدّل منها ما تحتاج. ثم الـRouter يولّد العناوين تلقائياً: router.register(r"", ProjectViewSet, basename="project").',src:'projects/views.py:128 · projects/urls.py',get:'خمس عمليات + العناوين',write:'ما تغيّره فقط'}
+];
+$('#vlad').innerHTML=VL.map((v,i)=>`<button class="chip" data-i="${i}">${i+1}. ${v.n}</button>`).join('');
+function showVL(i){const v=VL[i];$$('#vlad .chip').forEach((c,k)=>c.classList.toggle('on',k===i));
+ $('#vladcode').innerHTML=v.code.split('\n').map(l=>`<div class="cl" style="cursor:default">${esc(l)||'&nbsp;'}</div>`).join('');
+ $('#vladinfo').innerHTML=`<div class="st">المستوى ${i+1} من 4 · ${v.n}</div><h4>تكتب: ${v.write}</h4><p>${v.d}</p><div class="ana">تحصل عليه: ${v.get}</div><span class="code lat">${esc(v.src)}</span>`;
+ $('#vladtbl').style.display=i===3?'':'none';
+ $('#vladtbl').innerHTML=i===3?`<table class="dt"><thead><tr><th>العملية</th><th>طلب HTTP</th><th>العنوان</th></tr></thead><tbody><tr><td>list</td><td>GET</td><td>/projects/</td></tr><tr><td>create</td><td>POST</td><td>/projects/</td></tr><tr><td>retrieve</td><td>GET</td><td>/projects/{id}/</td></tr><tr><td>partial_update</td><td>PATCH</td><td>/projects/{id}/</td></tr><tr><td>destroy</td><td>DELETE</td><td>/projects/{id}/</td></tr><tr style="opacity:.45"><td>update</td><td>PUT</td><td>مُعطَّل عندنا (405)</td></tr></tbody></table>`:''}
+$('#vlad').onclick=e=>{const b=e.target.closest('.chip');if(b)showVL(+b.dataset.i)};
+showVL(3);
+
+/* 5. quiz */
+const VQ=[
+ {q:'ما وظيفة ملف urls؟',o:['يفحص صلاحيات المستخدم','يربط العنوان بالـView الذي يستلم الطلب','يحفظ البيانات في القاعدة'],a:1,e:'urls (والـRouter) يقرر أي View يستلم كل عنوان. الباقي يفعله الـView.'},
+ {q:'مستخدم مسجّل دخوله بلا صلاحية projects.create أرسل POST /projects/. ماذا يرجع؟',o:['201 ويُنشأ المشروع','403: معروف لكن ممنوع','401: غير معروف'],a:1,e:'403 لأنه معروف (مسجّل) لكن لا يملك الصلاحية، والفحص يحدث قبل أن تبدأ create.'},
+ {q:'لماذا يرجع PUT على المشاريع 405؟',o:['لأن الخادم معطّل','لأن http_method_names لا تسمح إلا بـget وpost وpatch وdelete','لأن المشروع غير موجود'],a:1,e:'عطّلنا PUT عمداً: نسمح بتعديل جزئي (PATCH) فقط.'},
+ {q:'ماذا يفعل is_valid(raise_exception=True)؟',o:['يحفظ الكائن','يوقف الطلب بـ400 عند أول خطأ في البيانات','يحذف الحقول الزائدة'],a:1,e:'عند الخطأ يرمي استثناء فيرجع DRF رد 400 تلقائياً، ولا يصل شيء إلى القاعدة.'},
+ {q:'ما الذي يعطيك إياه ModelViewSet دون أن تكتبه؟',o:['فحص صلاحيات خاص بمشروعك','list وcreate وretrieve وpartial_update وdestroy','واجهة React'],a:1,e:'خمس عمليات جاهزة، وتعدّل منها ما تحتاج (مثل get_queryset). والـRouter يولّد عناوينها.'}
+];
+let vsc=0,vans=0;
+$('#vquiz').innerHTML=VQ.map((q,i)=>`<div class="card q" id="vq${i}"><h4>${i+1}. ${q.q}</h4>${q.o.map((o,j)=>`<button class="opt" data-q="${i}" data-j="${j}">${o}</button>`).join('')}<div class="ex">${q.e}</div></div>`).join('');
+$('#vquiz').onclick=e=>{const b=e.target.closest('.opt');if(!b||b.disabled)return;const i=+b.dataset.q,j=+b.dataset.j;
+ $$('#vq'+i+' .opt').forEach((x,k)=>{x.disabled=true;if(k===VQ[i].a)x.classList.add('right')});
+ if(j===VQ[i].a)vsc++;else b.classList.add('wrong');$('#vq'+i).classList.add('done');vans++;
+ if(vans===VQ.length)$('#vscore').textContent='نتيجتك: '+vsc+' من '+VQ.length+(vsc===VQ.length?' — ممتاز! 🎉':' — راجع الأقسام أعلاه وأعد المحاولة')};
+
+/* 6. words */
+function vgl(q){q=(q||'').trim().toLowerCase();$('#vgl').innerHTML=VKEYS.map(k=>DEFS[k]).filter(d=>!q||(d[0]+d[1]).toLowerCase().includes(q)).map(d=>`<div class="gi"><b>${esc(d[0])}</b><p>${d[1]}</p></div>`).join('')||'<p style="color:var(--muted)">لا نتائج</p>'}
+vgl();$('#vgsearch').oninput=e=>vgl(e.target.value);
 </script>
 </body>
 </html>
