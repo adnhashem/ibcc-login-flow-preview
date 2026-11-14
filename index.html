@@ -232,6 +232,9 @@ table.dt tr:last-child td{border-bottom:none}
 .lar.on{opacity:1;stroke-width:4}
 #lplay-box.off{opacity:.45;pointer-events:none}
 #pcls,#pmig{white-space:pre;overflow-x:auto;max-height:none}
+.tplgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+@media(max-width:940px){.tplgrid{grid-template-columns:1fr}}
+iframe.prev{width:100%;height:340px;border:1px solid var(--line);border-radius:12px;background:#fff}
 .pipe{display:flex;align-items:stretch;gap:6px;flex-wrap:wrap;margin:14px 0}
 .pn{flex:1 1 130px;min-width:130px;background:#fff;border:2px solid var(--line);border-radius:14px;padding:10px 12px;text-align:center;opacity:.4;transition:.35s;transform:scale(.97)}
 .pn.lit{opacity:1;transform:scale(1);border-color:var(--c);box-shadow:var(--shadow)}
@@ -270,7 +273,7 @@ footer{padding:34px 0;border-top:1px solid var(--line);color:var(--muted);font-s
       <a class="tbtn" data-p="form" href="#form">1 Form <span class="ck">✔</span></a>
       <a class="tbtn" data-p="model" href="#model">2 Model <span class="ck">✔</span></a>
       <a class="tbtn" data-p="view" href="#view">3 View <span class="ck">✔</span></a>
-      <span class="tbtn dis" title="نشرحه بعد View">4 Template <em>قريباً</em></span>
+      <a class="tbtn" data-p="template" href="#template">4 Template <span class="ck">✔</span></a>
     </div>
   </div>
   <nav id="nav"></nav>
@@ -541,6 +544,80 @@ footer{padding:34px 0;border-top:1px solid var(--line);color:var(--muted);font-s
   <div class="sh"><span class="n">06</span><h2>كلمات بسيطة</h2></div>
   <input class="gs" id="vgsearch" placeholder="ابحث عن كلمة…" aria-label="بحث">
   <div class="gl" id="vgl"></div>
+</div></section>
+</main>
+
+<!-- ═════════════ TEMPLATE PAGE ═════════════ -->
+<main class="page" id="page-template" hidden>
+<div class="hero"><div class="wrap">
+  <div class="eyebrow">IBCC · Study Guide · Term 04 · Template</div>
+  <h1>Template: <span>صفحة بفراغات</span><br>يملؤها الخادم</h1>
+  <p>الـ<span class="df" data-k="template">Template</span> ورقة جاهزة فيها فراغات. الـView يعطيها بيانات، فتخرج صفحة HTML كاملة. الكلمات المنقّطة لها تعريف بسيط.</p>
+  <a class="cta" href="#t2">▶ ابدأ</a>
+  <div class="hero-flow" aria-hidden="true">
+    <div class="hf">View</div><div class="ha">←</div>
+    <div class="hf">context</div><div class="ha">←</div>
+    <div class="hf">Template</div><div class="ha">←</div>
+    <div class="hf">HTML</div>
+  </div>
+</div></div>
+
+<section class="blk" id="t1"><div class="wrap">
+  <div class="sh"><span class="n">01</span><h2>الصورة الكبيرة: ورقة الطلب الجاهزة</h2></div>
+  <p class="sub">مثل نموذج مطبوع فيه فراغات (الاسم، التاريخ) يملؤها الموظف. اضغط البطاقة لترى ما يقابلها في الكود.</p>
+  <div class="cards" id="tcards"></div>
+</div></section>
+
+<section class="blk" id="t2"><div class="wrap">
+  <div class="sh"><span class="n">02</span><h2>جرّب المحرّك: عدّل القالب وانظر الناتج</h2></div>
+  <p class="sub">هذا جزء حقيقي من <code>oauth/login.html</code>. غيّر البيانات يميناً أو عدّل نص القالب، فتتغير الصفحة فوراً. المحرّك هنا مصغّر يحاكي Django، لكنه يفهم نفس الصيغة.</p>
+  <div class="chips" id="tscen" style="margin-bottom:12px"></div>
+  <div class="tplgrid">
+    <div class="col">
+      <div class="card"><h3>context (ما يعطيه الـView)</h3>
+        <div class="fld"><label for="t-err">error_key</label><select class="btn" id="t-err" style="width:100%"><option value="">لا شيء (None)</option><option value="invalid">invalid</option><option value="missing">missing</option><option value="locked">locked</option></select></div>
+        <div class="fld" style="margin-top:8px"><label for="t-email">email</label><input id="t-email" type="text" spellcheck="false"></div>
+        <div class="fld" style="margin-top:8px"><label for="t-next">next</label><input id="t-next" type="text" spellcheck="false" value="/o/authorize/"></div>
+        <div class="tgl" style="margin-top:12px"><button class="sw on" id="t-esc" aria-label="autoescape"></button><span id="t-escl">autoescape: مفعّل</span></div>
+      </div>
+      <div class="card"><h3>القالب (قابل للتعديل)</h3><textarea class="json" id="t-src" spellcheck="false" style="min-height:300px"></textarea></div>
+    </div>
+    <div class="col">
+      <div class="card"><h3>الصفحة الناتجة</h3><iframe class="prev" id="t-prev" sandbox="" title="معاينة"></iframe><div class="why" id="t-warn" style="margin-top:8px;font-size:13.5px"></div></div>
+      <div class="card"><h3>HTML الذي يصل المتصفح</h3><div class="state" id="t-out" dir="ltr" style="white-space:pre-wrap;max-height:240px"></div></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="blk" id="t3"><div class="wrap">
+  <div class="sh"><span class="n">03</span><h2>رحلة صفحة الدخول: من الطلب إلى HTML</h2></div>
+  <p class="sub">كيف يستخدم <code>OAuthLoginView</code> القالب. اختر حالة وشاهد الأجزاء تضيء بالترتيب.</p>
+  <div class="chips" id="tflow-s" style="margin-bottom:6px"></div>
+  <div class="pipe" id="tflow"></div>
+  <div class="card info" id="tflow-i"></div>
+  <div class="codebox" id="tflow-c" dir="ltr" style="margin-top:14px"></div>
+</div></section>
+
+<section class="blk" id="t4"><div class="wrap">
+  <div class="sh"><span class="n">04</span><h2>«القالب» في IBCC له أربعة وجوه</h2></div>
+  <p class="sub">لا تنتظر أن ترى ملفات <code>.html</code> في كل مكان: معظم الواجهة React. اختر وجهاً.</p>
+  <div class="chips" id="tfam" style="margin-bottom:14px"></div>
+  <div class="mdual">
+    <div class="codebox" id="tfam-c" dir="ltr"></div>
+    <div class="col"><div class="card info" id="tfam-i"></div><div class="tblwrap"><table class="dt" id="tfam-t"></table></div></div>
+  </div>
+</div></section>
+
+<section class="blk" id="t5"><div class="wrap">
+  <div class="sh"><span class="n">05</span><h2>اختبر نفسك</h2></div>
+  <div class="qz" id="tquiz"></div>
+  <div class="score" id="tscore"></div>
+</div></section>
+
+<section class="blk" id="t6"><div class="wrap">
+  <div class="sh"><span class="n">06</span><h2>كلمات بسيطة</h2></div>
+  <input class="gs" id="tgsearch" placeholder="ابحث عن كلمة…" aria-label="بحث">
+  <div class="gl" id="tgl"></div>
 </div></section>
 </main>
 
@@ -869,7 +946,8 @@ addEventListener('scroll',()=>tip.style.display='none',{passive:true});
 const NAVS={
  form:[['s1','المطعم'],['s2','المحاكي'],['s3','الـSerializer'],['s4','التوكن'],['s5','اختبار'],['s6','المسرد']],
  model:[['m1','الدفتر'],['m2','الكود والجدول'],['m3','دورة الحياة'],['m4','الروابط والحماية'],['m5','اختبار'],['m6','كلمات بسيطة']],
- view:[['v1','مسؤول الطاولة'],['v2','العنوان ← View'],['v3','داخل create'],['v4','أنواع الـViews'],['v5','اختبار'],['v6','كلمات بسيطة']]
+ view:[['v1','مسؤول الطاولة'],['v2','العنوان ← View'],['v3','داخل create'],['v4','أنواع الـViews'],['v5','اختبار'],['v6','كلمات بسيطة']],
+ template:[['t1','الورقة الجاهزة'],['t2','جرّب المحرّك'],['t3','رحلة صفحة الدخول'],['t4','أربعة وجوه'],['t5','اختبار'],['t6','كلمات بسيطة']]
 };
 let PAGE='form';
 function showPage(p){if(!NAVS[p])p='form';PAGE=p;
@@ -1170,6 +1248,174 @@ $('#vquiz').onclick=e=>{const b=e.target.closest('.opt');if(!b||b.disabled)retur
 /* 6. words */
 function vgl(q){q=(q||'').trim().toLowerCase();$('#vgl').innerHTML=VKEYS.map(k=>DEFS[k]).filter(d=>!q||(d[0]+d[1]).toLowerCase().includes(q)).map(d=>`<div class="gi"><b>${esc(d[0])}</b><p>${d[1]}</p></div>`).join('')||'<p style="color:var(--muted)">لا نتائج</p>'}
 vgl();$('#vgsearch').oninput=e=>vgl(e.target.value);
+</script>
+<script>
+/* ═════════ TEMPLATE PAGE ═════════ */
+const TDEFS={
+ template:['Template','ملف HTML فيه فراغات ومنطق بسيط. الـView يعطيه بيانات فيصير صفحة كاملة.'],
+ context:['context','القاموس (dict) الذي يعطيه الـView للقالب: أسماء ← قيم. القالب لا يرى غيره.'],
+ placeholder:['{{ ... }}','فراغ يُملأ بقيمة من الـcontext، مثل {{ email }}.'],
+ tag:['{% ... %}','أمر منطقي داخل القالب: شرط (if) أو تكرار (for) أو غيره. لا يُطبع بنفسه.'],
+ filter:['filter  |','تعديل صغير على القيمة، مثل |default:"" يضع قيمة بديلة إن كانت فارغة.'],
+ render:['render()','دالة تأخذ القالب والـcontext وتُنتج الصفحة (HTML) جاهزة للإرسال.'],
+ autoescape:['autoescape','حماية تلقائية: يحوّل الرموز الخطرة مثل < إلى &lt; فتظهر كنص ولا تُنفَّذ كأوامر.'],
+ xss:['XSS','هجوم يكتب فيه شخص كود خبيثاً في حقل فينفَّذ في متصفح غيره إن لم تُحمَ القيمة.'],
+ csrf:['csrf_token','قيمة سرية مخفية في النموذج، تثبت أن الطلب جاء من صفحتنا نحن لا من موقع آخر.'],
+ app_dirs:['APP_DIRS','إعداد يجعل Django يبحث عن القوالب في مجلد templates داخل كل تطبيق.'],
+ jsx:['JSX','صيغة في React تشبه HTML داخل JavaScript. هي «القالب» في الواجهة عندنا.'],
+ format:['.format()','في Python: تستبدل {name} داخل النص بقيمة، وهي قالب بسيط للنصوص.'],
+ session:['session cookie','ملف صغير يحفظه المتصفح ليعرف الخادم أنك دخلت، تُستعمل في صفحة OAuth.']
+};
+const TKEYS=Object.keys(TDEFS);Object.assign(DEFS,TDEFS);
+$$('#page-template .df[data-k]').forEach(e=>{const d=DEFS[e.dataset.k];if(d){e.dataset.d=d[1];e.tabIndex=0}});
+const dft=k=>`<span class="df" tabindex="0" data-k="${k}" data-d="${esc(DEFS[k][1])}">${DEFS[k][0]}</span>`;
+
+/* 1. cards */
+const TC=[
+ {ar:'القالب',emoji:'📄',lat:'Template',c:C.blue,s:'#eef1fb',d:'الورقة الجاهزة بفراغاتها',code:'oauth/login.html'},
+ {ar:'الفراغ',emoji:'🔲',lat:'{{ email }}',c:C.gold,s:'#fdf3e6',d:'مكان تُوضع فيه قيمة',code:'value="{{ email|default:\'\' }}"'},
+ {ar:'المنطق',emoji:'🔀',lat:'{% if %}',c:C.purple,s:'#f6e9f6',d:'يختار ماذا يظهر',code:"{% if error_key == 'locked' %}"},
+ {ar:'السياق',emoji:'📦',lat:'context',c:C.green,s:'#ecf5ed',d:'القيم التي يعطيها الـView',code:"{'next': ..., 'error_key': ..., 'email': ...}"},
+ {ar:'المحرّك',emoji:'⚙️',lat:'render()',c:C.red,s:'#f9ecec',d:'يدمج القالب مع السياق',code:"render(request, 'oauth/login.html', {...})"},
+ {ar:'الناتج',emoji:'🌐',lat:'HTML',c:C.navy,s:'#eef1fb',d:'الصفحة التي تصل للمتصفح',code:'200 + <html>…'}
+];
+$('#tcards').innerHTML=TC.map(k=>`<div class="flip" tabindex="0" style="--c:${k.c};--s:${k.s}"><div class="flip-in"><div class="face"><div class="emoji">${k.emoji}</div><div class="big">${k.ar}</div><small>${k.d}</small><span class="hint">اضغط للقلب ↻</span></div><div class="face back"><div class="big">${esc(k.lat)}</div><code>${esc(k.code)}</code></div></div></div>`).join('');
+$$('#tcards .flip').forEach(f=>{const t=()=>f.classList.toggle('on');f.onclick=t;f.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();t()}}});
+
+/* 2. mini template engine (Django-like subset) */
+function ttok(src){const out=[];const re=/\{\{\s*(.+?)\s*\}\}|\{%\s*(.+?)\s*%\}/g;let last=0,m;while((m=re.exec(src))){if(m.index>last)out.push({k:'t',v:src.slice(last,m.index)});if(m[1]!==undefined)out.push({k:'v',v:m[1]});else out.push({k:'g',v:m[2]});last=re.lastIndex}if(last<src.length)out.push({k:'t',v:src.slice(last)});return out}
+function tparse(tk){let p=0;
+ function block(stops){const nodes=[];
+  while(p<tk.length){const t=tk[p];
+   if(t.k==='t'||t.k==='v'){nodes.push(t);p++;continue}
+   const name=t.v.split(/\s+/)[0];
+   if(stops.includes(name))return{nodes,stop:name,tag:t};
+   p++;
+   if(name==='if'){const node={k:'if',br:[]};let cond=t.v.slice(2).trim();
+    for(;;){const r=block(['elif','else','endif']);node.br.push({cond,nodes:r.nodes});
+     if(r.stop==='elif'){cond=r.tag.v.slice(4).trim();p++}
+     else if(r.stop==='else'){cond=null;p++}
+     else{if(r.stop==='endif')p++;break}}
+    nodes.push(node)}
+   else if(name==='comment'){block(['endcomment']);p++}
+   else if(name==='csrf_token')nodes.push({k:'csrf'});
+  }
+  return{nodes,stop:null}}
+ return block([]).nodes}
+const escH=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#x27;'}[c]));
+function tvar(expr,ctx,on){const parts=expr.split('|');let v=ctx[parts[0].trim()];
+ for(const f of parts.slice(1)){const m=f.trim().match(/^default:\s*['"](.*)['"]$/);if(m&&(v===undefined||v===null||v===''))v=m[1]}
+ if(v===undefined||v===null)v='';v=String(v);return on?escH(v):v}
+function tcond(c,ctx){let m=c.match(/^(\w+)\s*==\s*['"]([^'"]*)['"]$/);if(m)return String(ctx[m[1]]??'')===m[2];
+ m=c.match(/^not\s+(\w+)$/);if(m)return !ctx[m[1]];return !!ctx[c.trim()]}
+function teval(nodes,ctx,on){let o='';for(const n of nodes){
+ if(n.k==='t')o+=n.v;else if(n.k==='v')o+=tvar(n.v,ctx,on);
+ else if(n.k==='csrf')o+='<input type="hidden" name="csrfmiddlewaretoken" value="demo-token">';
+ else if(n.k==='if'){for(const b of n.br){if(b.cond===null||tcond(b.cond,ctx)){o+=teval(b.nodes,ctx,on);break}}}}
+ return o}
+const T_SRC=`{% if error_key %}
+  <div class="err">
+    {% if error_key == 'locked' %}
+      Too many failed sign-in attempts. Please try again later.
+      <span class="de">Zu viele fehlgeschlagene Anmeldeversuche.</span>
+    {% elif error_key == 'missing' %}
+      Please enter both your email address and your password.
+      <span class="de">Bitte geben Sie E-Mail und Passwort ein.</span>
+    {% else %}
+      {% comment %} one message for every failure: no account enumeration {% endcomment %}
+      Incorrect email address or password.
+      <span class="de">E-Mail-Adresse oder Passwort ist falsch.</span>
+    {% endif %}
+  </div>
+{% endif %}
+
+<form method="post" novalidate>
+  {% csrf_token %}
+  <input type="hidden" name="next" value="{{ next }}">
+  <label for="email">Email address</label>
+  <input id="email" type="email" name="email" value="{{ email|default:'' }}">
+  <label for="password">Password</label>
+  <input id="password" type="password" name="password">
+  <button type="submit">Sign in / Anmelden</button>
+</form>`;
+const PREV_CSS='<style>body{font-family:system-ui,sans-serif;padding:16px;color:#101540}.err{background:#f9ecec;border:1px solid #b23b3b;padding:10px;border-radius:8px;margin-bottom:12px;color:#7a1f1f;font-size:14px}.de{display:block;opacity:.7;font-size:.9em}label{display:block;margin-top:10px;font-size:13px;color:#5b6080}input[type=email],input[type=password]{width:100%;padding:8px;border:1px solid #bcc3e6;border-radius:8px;box-sizing:border-box}button{margin-top:14px;padding:9px 16px;border:0;border-radius:8px;background:#A85600;color:#fff;font-weight:700}</style>';
+const TSC=[
+ {id:'clean',t:'فتح الصفحة (GET)',cls:'ok',err:'',email:''},
+ {id:'invalid',t:'كلمة سر خاطئة',cls:'bad',err:'invalid',email:'sara@example.com'},
+ {id:'missing',t:'حقول ناقصة',cls:'bad',err:'missing',email:'sara@example.com'},
+ {id:'locked',t:'محظور مؤقتاً',cls:'bad',err:'locked',email:'sara@example.com'},
+ {id:'xss',t:'بريد خبيث (XSS)',cls:'bad',err:'invalid',email:'"><scr'+'ipt>alert(1)</scr'+'ipt>'}
+];
+let TESC=true;
+$('#tscen').innerHTML=TSC.map(s=>`<button class="chip ${s.cls}" data-id="${s.id}">${s.t}</button>`).join('');
+$('#t-src').value=T_SRC;
+function trender(){
+ const ctx={error_key:$('#t-err').value||null,email:$('#t-email').value,next:$('#t-next').value};
+ let html;try{html=teval(tparse(ttok($('#t-src').value)),ctx,TESC)}catch(e){html='(خطأ في القالب: '+e.message+')'}
+ $('#t-prev').srcdoc='<!doctype html><meta charset="utf-8">'+PREV_CSS+html;
+ $('#t-out').textContent=html.replace(/\n\s*\n+/g,'\n');
+ const evil=/<script/i.test(ctx.email);
+ $('#t-warn').innerHTML=!TESC&&evil?'⚠ autoescape معطّل: الكود الخبيث دخل الصفحة كما هو. في صفحة حقيقية كان سيُنفَّذ في متصفح الضحية (المعاينة هنا معزولة).':(TESC&&evil?'✔ autoescape مفعّل: القيمة تحوّلت إلى نص آمن (&lt;script&gt;) ولن تُنفَّذ.':'')}
+$('#tscen').onclick=e=>{const b=e.target.closest('.chip');if(!b)return;const s=TSC.find(x=>x.id===b.dataset.id);$$('#tscen .chip').forEach(c=>c.classList.toggle('on',c===b));$('#t-err').value=s.err;$('#t-email').value=s.email;if(s.id==='xss'){TESC=false;$('#t-esc').classList.remove('on');$('#t-escl').textContent='autoescape: معطّل'}else{TESC=true;$('#t-esc').classList.add('on');$('#t-escl').textContent='autoescape: مفعّل'}trender()};
+['#t-err','#t-email','#t-next','#t-src'].forEach(s=>$(s).addEventListener('input',trender));
+$('#t-esc').onclick=()=>{TESC=!TESC;$('#t-esc').classList.toggle('on',TESC);$('#t-escl').textContent='autoescape: '+(TESC?'مفعّل':'معطّل');trender()};
+$$('#tscen .chip')[0].classList.add('on');trender();
+
+/* 3. request journey */
+const TF={
+ get:{t:'فتح الصفحة (GET)',m:'get()',ctx:"{'next': '/o/authorize/…', 'error_key': None, 'email': ''}",br:'لا يظهر مربع الخطأ',st:'200',ok:true,why:'أول زيارة: صفحة نظيفة.',
+  code:['def get(self, request):','    nxt = self._safe_next(request)','    if request.user.is_authenticated and nxt:','        return redirect(nxt)','    return self._render(request)']},
+ invalid:{t:'كلمة سر خاطئة (POST)',m:'post(): authenticate ← None',ctx:"{'error_key': 'invalid', 'email': 'sara@…'}",br:'{% else %}: «Incorrect email address or password.»',st:'401',ok:false,why:'الرسالة واحدة لكل أنواع الفشل (كلمة خاطئة أو حساب غير موجود أو معطّل) حتى لا نكشف أي الحسابات موجودة.',
+  code:['user = authenticate(request, username=email, password=password)','if user is None:','    attempts = ratelimit.record_failure(email, ip)','    return self._render(request, error_key="invalid",','                        email=email, status=401)']},
+ missing:{t:'حقول ناقصة (POST)',m:'post(): email أو password فارغ',ctx:"{'error_key': 'missing', 'email': '…'}",br:"{% elif error_key == 'missing' %}",st:'400',ok:false,why:'يُردّ الطلب قبل أي فحص للحساب.',
+  code:['if not email or not password:','    return self._render(request, error_key="missing",','                        email=email, status=400)']},
+ locked:{t:'محظور مؤقتاً (POST)',m:'post(): is_locked_out ← True',ctx:"{'error_key': 'locked', 'email': '…'}",br:"{% if error_key == 'locked' %}",st:'429',ok:false,why:'يُفحص الحظر قبل تقييم كلمة السر، فلا تُمنح محاولة إضافية لمن حُظر.',
+  code:['if ratelimit.is_locked_out(email, ip):','    return self._render(request, error_key="locked",','                        email=email, status=429)']}
+};
+let TFK='get',TFT=0;
+$('#tflow-s').innerHTML=Object.entries(TF).map(([k,v])=>`<button class="chip ${v.ok?'ok':'bad'}" data-k="${k}">${v.t}</button>`).join('');
+function showTF(k){TFK=k;const f=TF[k];$$('#tflow-s .chip').forEach(c=>c.classList.toggle('on',c.dataset.k===k));
+ const nodes=[['المتصفح',f.t,C.blue],['الـView',f.m,C.gold],['context','<span class="lat">'+esc(f.ctx)+'</span>',C.green],['القالب','<span class="lat">oauth/login.html</span><br><span class="lat">'+esc(f.br)+'</span>',C.purple],['الرد',`<span class="stat ${f.ok?'s2':'s4'}">${f.st}</span> + HTML`,C.navy]];
+ $('#tflow').innerHTML=nodes.map((n,i)=>`<div class="pn" id="tn${i}" style="--c:${n[2]}"><small>${n[0]}</small><b>${n[1]}</b></div>${i<4?'<div class="pa">←</div>':''}`).join('');
+ const t=++TFT;nodes.forEach((_,i)=>setTimeout(()=>{if(t===TFT){const e=$('#tn'+i);if(e)e.classList.add('lit')}},260*i));
+ $('#tflow-i').innerHTML=`<div class="st">${esc(f.t)}</div><h4>الرد: ${f.st}</h4><p>${f.why}</p><span class="code lat">apps/oauth/views.py:394-520</span>`;
+ $('#tflow-c').innerHTML=f.code.map(l=>`<div class="cl" style="cursor:default">${esc(l)}</div>`).join('')}
+$('#tflow-s').onclick=e=>{const b=e.target.closest('.chip');if(b)showTF(b.dataset.k)};
+showTF('invalid');
+
+/* 4. four faces */
+const TFAM=[
+ {n:'Django Template',code:'<input type="hidden" name="next" value="{{ next }}">\n<input id="email" name="email"\n       value="{{ email|default:\'\' }}">\n\n{% if error_key == \'locked\' %}\n  Too many failed sign-in attempts.\n{% endif %}',who:'محرّك Django على الخادم',when:'عند كل طلب للصفحة',out:'نص HTML يرسله الخادم',src:'apps/oauth/templates/oauth/login.html',note:'عندنا قالبان فقط: login.html (100 سطر) وauthorize.html (141 سطراً، شاشة الموافقة)، كلاهما لتسجيل دخول خادم MCP عبر OAuth.'},
+ {n:'React JSX',code:'<Input\n  id="email"\n  value={form.email}\n  onChange={handleChange(\'email\')}\n  error={errors.email}\n/>',who:'React في المتصفح',when:'كلما تغيّرت الحالة (state)',out:'الشاشة نفسها (DOM)',src:'frontend/src/pages/Login.jsx',note:'هذا «القالب» الفعلي لمعظم شاشات النظام. {form.email} يقابل {{ email }}، و&& وmap() يقابلان if وfor.'},
+ {n:'نص بريد (Python)',code:'message = (\n  "Hallo {name},\\n\\n"\n  "... {link}\\n\\n"\n  "---\\n\\n"\n  "Hello {name}, ..."\n).format(name=display_name, link=reset_link)',who:'دالة Python',when:'عند طلب استعادة كلمة السر',out:'نص البريد: الألمانية أولاً ثم الإنجليزية',src:'apps/accounts/services.py:25-52',note:'لا نستخدم قالب Django للبريد: نص عادي بفراغات {name} و{link} تُملأ بـ.format().'},
+ {n:'سجل رسائل الإشعارات',code:'def _render_assigned(context):\n    task_number = _get(context, "task_number")\n    ...\n    return (title_en, title_de,\n            message_en, message_de)',who:'دوال Python في سجل (registry)',when:'عند إرسال الإشعار (Celery)',out:'عنوان ورسالة بلغتين',src:'apps/notifications/templates_registry.py',note:'الواجهة تعرض النصوص المخزّنة كما هي: لا قوالب في المتصفح للإشعارات.'}
+];
+$('#tfam').innerHTML=TFAM.map((v,i)=>`<button class="chip" data-i="${i}">${i+1}. ${v.n}</button>`).join('');
+function showTFam(i){const v=TFAM[i];$$('#tfam .chip').forEach((c,k)=>c.classList.toggle('on',k===i));
+ $('#tfam-c').innerHTML=v.code.split('\n').map(l=>`<div class="cl" style="cursor:default">${esc(l)||'&nbsp;'}</div>`).join('');
+ $('#tfam-i').innerHTML=`<div class="st">الوجه ${i+1} من 4</div><h4>${v.n}</h4><p>${v.note}</p><span class="code lat">${esc(v.src)}</span>`;
+ $('#tfam-t').innerHTML=`<tbody><tr><th>من يملأ الفراغات</th><td style="white-space:normal">${v.who}</td></tr><tr><th>متى</th><td style="white-space:normal">${v.when}</td></tr><tr><th>الناتج</th><td style="white-space:normal">${v.out}</td></tr></tbody>`}
+$('#tfam').onclick=e=>{const b=e.target.closest('.chip');if(b)showTFam(+b.dataset.i)};
+showTFam(0);
+
+/* 5. quiz */
+const TQ=[
+ {q:'من يضع القيم في فراغات القالب؟',o:['المتصفح','الـView عبر الـcontext، ثم المحرّك يدمجها','قاعدة البيانات مباشرة'],a:1,e:'الـView يجهّز السياق (context) ويستدعي render()، والمحرّك يدمج القالب معه.'},
+ {q:'لماذا عندنا قالبان فقط من Django؟',o:['لأن Django لا يدعم أكثر','لأن معظم الواجهة React منفصلة، وصفحات OAuth وحدها تحتاج جلسة Django على نطاق الـAPI','لأن القوالب ممنوعة'],a:1,e:'OAuthLoginView كلاس Django عادي عن قصد، ليضع session cookie على نفس النطاق، ولذلك تُعرض صفحاته بقوالب.'},
+ {q:'ماذا يفعل autoescape؟',o:['يضغط الصفحة','يحوّل الرموز الخطرة مثل < إلى نص آمن فلا تُنفَّذ','يترجم القالب'],a:1,e:'هذا ما يحمي من XSS: القيمة التي يكتبها المستخدم تُعرض كنص لا كأمر.'},
+ {q:'ما رقم الحالة عندما تتجاوز محاولات الدخول الحد؟',o:['200','429','404'],a:1,e:'locked ← 429، وinvalid ← 401، وmissing ← 400 (apps/oauth/views.py).'},
+ {q:'ما الذي يلعب دور «القالب» في شاشة Login.jsx؟',o:['ملف login.html','الـJSX داخل return','ملف urls'],a:1,e:'JSX هو القالب في React: {form.email} مثل {{ email }}.'}
+];
+let tsc=0,tans=0;
+$('#tquiz').innerHTML=TQ.map((q,i)=>`<div class="card q" id="tq${i}"><h4>${i+1}. ${q.q}</h4>${q.o.map((o,j)=>`<button class="opt" data-q="${i}" data-j="${j}">${o}</button>`).join('')}<div class="ex">${q.e}</div></div>`).join('');
+$('#tquiz').onclick=e=>{const b=e.target.closest('.opt');if(!b||b.disabled)return;const i=+b.dataset.q,j=+b.dataset.j;
+ $$('#tq'+i+' .opt').forEach((x,k)=>{x.disabled=true;if(k===TQ[i].a)x.classList.add('right')});
+ if(j===TQ[i].a)tsc++;else b.classList.add('wrong');$('#tq'+i).classList.add('done');tans++;
+ if(tans===TQ.length)$('#tscore').textContent='نتيجتك: '+tsc+' من '+TQ.length+(tsc===TQ.length?' — ممتاز! 🎉':' — راجع الأقسام أعلاه وأعد المحاولة')};
+
+/* 6. words */
+function tgl(q){q=(q||'').trim().toLowerCase();$('#tgl').innerHTML=TKEYS.map(k=>DEFS[k]).filter(d=>!q||(d[0]+d[1]).toLowerCase().includes(q)).map(d=>`<div class="gi"><b>${esc(d[0])}</b><p>${d[1]}</p></div>`).join('')||'<p style="color:var(--muted)">لا نتائج</p>'}
+tgl();$('#tgsearch').oninput=e=>tgl(e.target.value);
 </script>
 </body>
 </html>
